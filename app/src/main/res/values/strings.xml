@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">KvantNews</string>
+    <string name="get_data">Get data</string>
+    <string name="registration">Регистрация</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="come_in">Войти</string>
+    <string name="NoSuchUsers">Такой пользователь не зарегистрирован в системе.</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="who_are_you">Кем вы являетесь?</string>
+    <string name="fill_in_register">Заполните все поля регистрации</string>
+    <string name="min_length_login_5">Минамальная длина логина - 5 символов</string>
+    <string name="min_length_pass_5">Минамальная длина пароля - 5 символов</string>
+    <string name="pass_should_equal">Пароли должны совпадать</string>
+    <string name="you_successfully_register">Вы успешно зарегистрировались!</string>
+    <string name="this_name_busy">Это имя уже занято!</string>
+    <string name="network_problems">Проблемы с подключением к серверу</string>
+    <string name="student">Ученик</string>
+    <string name="parent">Родитель</string>
+    <string name="teacher">Учитель</string>
+</resources>
