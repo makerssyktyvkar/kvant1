@@ -21,7 +21,7 @@ public class GetTypeOfUser extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... arg0) {
         try {
             String link = "https://kvantfp.000webhostapp.com/getTypeOfUser.php";
-            String data = URLEncoder.encode("login", "UTF-8") + "=" + login + "&password=" + password;
+            String data = "login" + "=" + login + "&password=" + password;
             URL url = new URL(link);
             URLConnection con = url.openConnection();
             con.setDoOutput(true);
