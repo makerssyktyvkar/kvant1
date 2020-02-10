@@ -12,7 +12,7 @@
     <string name="fill_in_register">Заполните все поля регистрации</string>
     <string name="min_length_login_5">Минамальная длина логина - 5 символов</string>
     <string name="min_length_pass_5">Минамальная длина пароля - 5 символов</string>
-    <string name="pass_should_equal">Пароли должны совпадать</string>
+    <string name="pass_should_equal">Пароли должны совпадать!</string>
     <string name="you_successfully_register">Вы успешно зарегистрировались!</string>
     <string name="this_name_busy">Это имя уже занято!</string>
     <string name="network_problems">Проблемы с подключением к серверу</string>
