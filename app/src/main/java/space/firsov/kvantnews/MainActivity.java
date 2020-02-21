@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -12,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final TextView today_text = findViewById(R.id.today);
-        int tp = LoginActivity.tp;
+        int tp = Integer.valueOf(Objects.requireNonNull(getIntent().getStringExtra("type")));
         if(tp==1){
             today_text.setText("Вы вошли как администратор");
         }else if(tp==2){
