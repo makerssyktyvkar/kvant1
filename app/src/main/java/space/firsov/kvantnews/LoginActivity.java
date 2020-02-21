@@ -29,6 +29,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         password_et = findViewById(R.id.password);
         tw1 = findViewById(R.id.tw1);
         user = new User(this);
+        if(getIntent().getIntExtra("type",0)==1){
+            user.deleteAll();
+        }
         ArrayList<Pair<String, Integer>> now = user.selectAll();
         if(now.size()!=0){
             startMain(now.get(0));
