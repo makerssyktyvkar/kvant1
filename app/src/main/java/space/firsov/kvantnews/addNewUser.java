@@ -21,8 +21,8 @@ public class addNewUser extends AsyncTask<String,Void, Boolean> {
     protected Boolean doInBackground(String... arg0) {
         try {
             String link = "https://kvantfp.000webhostapp.com/addNewUser.php";
-            String data = "login_et" + "=" +
-                    login + "&password_et=" + password + "&type=" + person;
+            String data = "login" + "=" +
+                    login + "&password=" + password + "&type=" + person;
             URL url = new URL(link);
             URLConnection con = url.openConnection();
             con.setDoOutput(true);
