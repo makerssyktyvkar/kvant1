@@ -13,23 +13,31 @@
             android:id="@+id/tw_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="username"
+            android:text="@string/example_username"
             android:textSize="40sp"
             android:layout_weight="1"/>
-        <Button
-            android:id="@+id/btn_to_login"
+        <ImageButton
+            android:id="@+id/selector"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Выйти"
-            android:textSize="30sp"/>
+            android:layout_weight="5"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/selector"
+            android:contentDescription="@string/selector" />
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/main_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"/>
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/main_container">
+        </LinearLayout>
+    </ScrollView>
 
 
 
