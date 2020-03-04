@@ -16,7 +16,7 @@ class News {
     News(String title, String message, String image_src, String additionalInfo) {
         this.title = title;
         this.message = message;
-        byte[] imageBytes= Base64.decode(image_src.substring(24), Base64.DEFAULT);
+        byte[] imageBytes= Base64.decode(image_src, Base64.DEFAULT);
         InputStream is = new ByteArrayInputStream(imageBytes);
         this.image= BitmapFactory.decodeStream(is);
         this.additionalInfo = additionalInfo;

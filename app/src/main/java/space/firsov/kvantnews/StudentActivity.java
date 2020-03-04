@@ -7,28 +7,25 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-
 import androidx.fragment.app.FragmentActivity;
-
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class StudentActivity extends FragmentActivity implements View.OnClickListener{
     private LinearLayout mainContainer;
     private ArrayList<News> listNews = new ArrayList<>();
     private ArrayList<LinearLayout> listLinearNews = new ArrayList<>();
+    private NewsDB newsBD;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +38,39 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
         String username = getIntent().getStringExtra("student_name");
         tw_username.setText(username);
 
+        newsBD = new NewsDB(this);
+        listNews = newsBD.selectAll();
+
         btn_selector.setOnClickListener(this);
 
-        try {
-            new GetNews().execute().get();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
+        if(false && listNews.size()!=0){
+            try{
+                new DrawThreadNews().execute().get();
+            }catch (Exception e){
+                //
+            }
+        }else{
+            try{
+                new GetNews().execute().get();
+            }catch(Exception e){
+                //
+            }
+        }
+
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private class DrawThreadNews extends AsyncTask<String, Void, Void> {
+        @SuppressLint("WrongThread")
+        @Override
+        protected Void doInBackground(String... args) {
+            int i = 0;
+            for (News news : listNews) {
+                drawNews(i, news.title, news.message, news.image, news.additionalInfo);
+                i++;
+            }
+
+            return null;
         }
     }
 
@@ -65,12 +89,14 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
                     mainContainer.removeView(view);
                 }
                 listLinearNews.clear();
+                //newsBD.deleteAll();
                 for(int i=0;i<element.size();i++){
                     String title = element.select("h2[class=title]").eq(i).text();
                     String desc = element.select("p[class=message]").eq(i).text();
                     String time = element.select("p[class=time]").eq(i).text();
-                    String linkImage = /*document.baseUri() + */element.select("img").eq(i).attr("src");
+                    String linkImage = /*document.baseUri() + */element.select("img").eq(i).attr("src").substring(24);
                     listNews.add(new News(title, desc, linkImage, time));
+                    newsBD.insert(title,desc,linkImage,time);
                 }
             } catch (Exception e) {
                 //
@@ -86,6 +112,7 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+
         }
     }
 
