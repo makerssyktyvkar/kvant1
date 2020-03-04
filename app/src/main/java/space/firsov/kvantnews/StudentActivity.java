@@ -43,7 +43,7 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
 
         btn_selector.setOnClickListener(this);
 
-        if(false && listNews.size()!=0){
+        if(listNews.size()!=0){
             try{
                 new DrawThreadNews().execute().get();
             }catch (Exception e){
