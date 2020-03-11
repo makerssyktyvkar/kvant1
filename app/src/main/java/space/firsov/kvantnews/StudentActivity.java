@@ -8,12 +8,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -24,12 +25,17 @@ import java.util.ArrayList;
 public class StudentActivity extends FragmentActivity implements View.OnClickListener{
     private LinearLayout mainContainer;
     private ArrayList<News> listNews = new ArrayList<>();
-    private ArrayList<LinearLayout> listLinearNews = new ArrayList<>();
+    private ArrayList<NewsFragment> listLinearNews = new ArrayList<>();
     private NewsDB newsBD;
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
+
+        manager = getSupportFragmentManager();
 
         TextView tw_username = findViewById(R.id.tw_username);
         ImageButton btn_selector = findViewById(R.id.selector);
@@ -87,9 +93,9 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
                 String url = "https://kvantfp.000webhostapp.com/ReturnNews.php";
                 Document document = Jsoup.connect(url).get();
                 Elements element = document.select("li[class=news-item]");
-                for(View view: listLinearNews){
+                /*for(View view: listLinearNews){
                     mainContainer.removeView(view);
-                }
+                }*/
                 listLinearNews.clear();
                 newsBD.deleteAll();
                 for(int i=0;i<element.size();i++){
@@ -137,7 +143,14 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
 
     @SuppressLint("SetTextI18n")
     private void drawNews(int id, String title, String message, Bitmap image, String time){
-        listLinearNews.add(new LinearLayout(getApplicationContext()));
+        listLinearNews.add(new NewsFragment(title,message,time,image));
+        transaction = manager.beginTransaction();
+
+        transaction.add(R.id.main_container, listLinearNews.get(listLinearNews.size()-1));
+
+        transaction.commit();
+
+        /*listLinearNews.add(new LinearLayout(getApplicationContext()));
         TextView tw_title = new TextView(getApplicationContext());
         TextView tw_message = new TextView(getApplicationContext());
         ImageView iw_img = new ImageView(getApplicationContext());
@@ -151,12 +164,12 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
                         LinearLayout.LayoutParams.WRAP_CONTENT)
         );
 
-        /*linearLayout.setOnClickListener(new View.OnClickListener() {
+        //linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mainContainer.removeView(v);
             }
-        });*/
+        //});
 
         tw_title.setText(title);
         tw_title.setTextSize(35);
@@ -194,7 +207,7 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
         listLinearNews.get(id).addView(tw_message);
         listLinearNews.get(id).addView(tw_time);
         listLinearNews.get(id).addView(iw_img);
-        mainContainer.addView(listLinearNews.get(id));
+        mainContainer.addView(listLinearNews.get(id));*/
     }
 
     @SuppressLint("ResourceType")
