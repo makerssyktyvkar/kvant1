@@ -59,4 +59,6 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.2.1'
     implementation 'io.github.hendraanggrian:picasso-transformations:0.5.0'
     implementation 'org.jsoup:jsoup:1.12.2'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:19.+'
 }

@@ -15,16 +15,27 @@
             android:layout_height="wrap_content"
             android:text="@string/example_username"
             android:textSize="40sp"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
+        <ImageButton
+            android:id="@+id/reload_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/reload"
+            android:contentDescription="@string/selector" />
+
         <ImageButton
             android:id="@+id/selector"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/selector"
             android:scaleType="centerCrop"
             android:src="@drawable/selector"
-            android:contentDescription="@string/selector" />
+            />
     </LinearLayout>
 
     <ScrollView

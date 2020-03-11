@@ -33,6 +33,7 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
 
         TextView tw_username = findViewById(R.id.tw_username);
         ImageButton btn_selector = findViewById(R.id.selector);
+        ImageButton btn_reload = findViewById(R.id.reload_button);
         mainContainer = findViewById(R.id.main_container);
 
         String username = getIntent().getStringExtra("student_name");
@@ -42,6 +43,7 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
         listNews = newsBD.selectAll();
 
         btn_selector.setOnClickListener(this);
+        btn_reload.setOnClickListener(this);
 
         if(listNews.size()!=0){
             try{
@@ -89,7 +91,7 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
                     mainContainer.removeView(view);
                 }
                 listLinearNews.clear();
-                //newsBD.deleteAll();
+                newsBD.deleteAll();
                 for(int i=0;i<element.size();i++){
                     String title = element.select("h2[class=title]").eq(i).text();
                     String desc = element.select("p[class=message]").eq(i).text();
@@ -128,6 +130,8 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.selector:
                 showPopupMenu(v);
+            case R.id.reload_button:
+                new GetNews().execute();
         }
     }
 
