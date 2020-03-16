@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:orientation="vertical">
+android:orientation="vertical" android:paddingBottom="5dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Title"
         android:id="@+id/title"
         android:textSize="40sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/black95"
+        android:background="@color/dark_background_news"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,13 +23,21 @@ android:orientation="vertical">
         android:layout_height="wrap_content"
         android:text="10.03.2020"
         android:id="@+id/date"
-        android:textSize="20sp"/>
-
-    <ImageView
+        android:textSize="20sp"
+        android:background="@color/light_green"
+        android:textColor="@color/black60"/>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150pt"
-        android:id="@+id/news_image"
-        android:src="@drawable/common_google_signin_btn_icon_dark" />
+        android:layout_height="wrap_content"
+        android:background="@color/background_news">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:id="@+id/news_image"
+            android:src="@drawable/common_google_signin_btn_icon_dark" />
+    </LinearLayout>
 
 
 </LinearLayout>
