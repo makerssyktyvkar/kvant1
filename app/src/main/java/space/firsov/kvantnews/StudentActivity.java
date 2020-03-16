@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
@@ -21,26 +22,23 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class StudentActivity extends FragmentActivity implements View.OnClickListener{
-    private LinearLayout mainContainer;
     private ArrayList<News> listNews = new ArrayList<>();
-    private ArrayList<NewsFragment> listLinearNews = new ArrayList<>();
     private NewsDB newsBD;
-    private FragmentManager manager;
-    private FragmentTransaction transaction;
+    private MyNewsAdapter adapter;
+    ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
 
-        manager = getSupportFragmentManager();
-
         TextView tw_username = findViewById(R.id.tw_username);
         ImageButton btn_selector = findViewById(R.id.selector);
         ImageButton btn_reload = findViewById(R.id.reload_button);
-        mainContainer = findViewById(R.id.main_container);
+        lv =  (ListView) findViewById(R.id.list_container);
 
         String username = getIntent().getStringExtra("student_name");
         tw_username.setText(username);
@@ -52,11 +50,8 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
         btn_reload.setOnClickListener(this);
 
         if(listNews.size()!=0){
-            try{
-                new DrawThreadNews().execute().get();
-            }catch (Exception e){
-                //
-            }
+            adapter = new MyNewsAdapter(this, drawThreadNews());
+            lv.setAdapter(adapter);
         }else{
             try{
                 new GetNews().execute().get();
@@ -67,19 +62,12 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
 
     }
 
-    @SuppressLint("StaticFieldLeak")
-    private class DrawThreadNews extends AsyncTask<String, Void, Void> {
-        @SuppressLint("WrongThread")
-        @Override
-        protected Void doInBackground(String... args) {
-            int i = 0;
-            for (News news : listNews) {
-                drawNews(i, news.title, news.message, news.image, news.additionalInfo);
-                i++;
-            }
-
-            return null;
+    private News[] drawThreadNews (){
+        News[] news = new News[listNews.size()];
+        for(int i=0;i<listNews.size();i++){
+            news[i] = listNews.get(i);
         }
+        return news;
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -93,27 +81,20 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
                 String url = "https://kvantfp.000webhostapp.com/ReturnNews.php";
                 Document document = Jsoup.connect(url).get();
                 Elements element = document.select("li[class=news-item]");
-                /*for(View view: listLinearNews){
-                    mainContainer.removeView(view);
-                }*/
-                listLinearNews.clear();
                 newsBD.deleteAll();
                 for(int i=0;i<element.size();i++){
                     String title = element.select("h2[class=title]").eq(i).text();
                     String desc = element.select("p[class=message]").eq(i).text();
                     String time = element.select("p[class=time]").eq(i).text();
-                    String linkImage = /*document.baseUri() + */element.select("img").eq(i).attr("src").substring(24);
+                    String linkImage = element.select("img").eq(i).attr("src").substring(24);
                     listNews.add(new News(title, desc, linkImage, time));
                     newsBD.insert(title,desc,linkImage,time);
                 }
             } catch (Exception e) {
                 //
             }
-            int i=0;
-            for(News news : listNews){
-                drawNews(i,news.title,news.message,news.image, news.additionalInfo);
-                i++;
-            }
+            adapter = new MyNewsAdapter(getApplicationContext(), drawThreadNews());
+            lv.setAdapter(adapter);
             return "";
         }
 
@@ -141,74 +122,6 @@ public class StudentActivity extends FragmentActivity implements View.OnClickLis
         }
     }
 
-    @SuppressLint("SetTextI18n")
-    private void drawNews(int id, String title, String message, Bitmap image, String time){
-        listLinearNews.add(new NewsFragment(title,message,time,image));
-        transaction = manager.beginTransaction();
-
-        transaction.add(R.id.main_container, listLinearNews.get(listLinearNews.size()-1));
-
-        transaction.commit();
-
-        /*listLinearNews.add(new LinearLayout(getApplicationContext()));
-        TextView tw_title = new TextView(getApplicationContext());
-        TextView tw_message = new TextView(getApplicationContext());
-        ImageView iw_img = new ImageView(getApplicationContext());
-        TextView tw_time = new TextView(getApplicationContext());
-
-        listLinearNews.get(id).setId(id);
-        listLinearNews.get(id).setOrientation(LinearLayout.VERTICAL);
-        listLinearNews.get(id).setLayoutParams(
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT)
-        );
-
-        //linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainContainer.removeView(v);
-            }
-        //});
-
-        tw_title.setText(title);
-        tw_title.setTextSize(35);
-        tw_title.setLayoutParams(
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT)
-        );
-
-        tw_message.setText(message);
-        tw_message.setTextSize(25);
-        tw_message.setLayoutParams(
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT)
-        );
-
-        //Picasso.get().load(src_img).transform(new CropSquareTransformation()).into(iw_img);
-        iw_img.setImageBitmap(image);
-        iw_img.setLayoutParams(
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.MATCH_PARENT)
-        );
-
-        tw_time.setText(time);
-        tw_time.setTextSize(15);
-        tw_time.setLayoutParams(
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT)
-        );
-
-        listLinearNews.get(id).addView(tw_title);
-        listLinearNews.get(id).addView(tw_message);
-        listLinearNews.get(id).addView(tw_time);
-        listLinearNews.get(id).addView(iw_img);
-        mainContainer.addView(listLinearNews.get(id));*/
-    }
 
     @SuppressLint("ResourceType")
     private void showPopupMenu(View v) {
