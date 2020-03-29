@@ -2,6 +2,7 @@ package space.firsov.kvantnews;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -13,7 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class StudentNavActivity extends AppCompatActivity {
+public class StudentNavActivity extends AppCompatActivity{
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -28,13 +29,15 @@ public class StudentNavActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_news, R.id.nav_timetable, R.id.nav_posts)
+                R.id.nav_news, R.id.nav_timetable, R.id.nav_posts,
+                R.id.nav_achievements, R.id.nav_support, R.id.nav_settings, R.id.nav_exit)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
