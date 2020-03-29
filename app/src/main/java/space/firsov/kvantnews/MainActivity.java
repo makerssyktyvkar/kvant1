@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity{
         }
     }
     private void startStudentActivity(){
-        Intent intent = new Intent(MainActivity.this, StudentActivity.class);
+        Intent intent = new Intent(MainActivity.this, StudentNavActivity.class);
         intent.putExtra("student_name",username);
         startActivity(intent);
     }
