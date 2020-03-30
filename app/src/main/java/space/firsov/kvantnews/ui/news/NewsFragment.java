@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import space.firsov.kvantnews.R;
@@ -25,7 +27,6 @@ import space.firsov.kvantnews.R;
 public class NewsFragment extends Fragment  implements View.OnClickListener {
 
     private ArrayList<News> listNews = new ArrayList<>();
-    private static long back_pressed = -1;
     private NewsDB newsBD;
     private MyNewsAdapter adapter;
     private ListView lv;
@@ -36,7 +37,6 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
 
         View root = inflater.inflate(R.layout.fragment_news, container, false);
         lv =  (ListView) root.findViewById(R.id.list_container);
-
         newsBD = new NewsDB(root.getContext());
         listNews = newsBD.selectAll();
 
@@ -46,7 +46,7 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
         }else{
             reloadPressed();
         }
-        Button reload_btn = (Button)root.findViewById(R.id.reload_btn);
+        ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
         reload_btn.setOnClickListener(this);
 
         return root;
@@ -70,6 +70,7 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
                 Document document = Jsoup.connect(url).get();
                 Elements element = document.select("li[class=news-item]");
                 newsBD.deleteAll();
+                listNews.clear();
                 for(int i=0;i<element.size();i++){
                     String title = element.select("h2[class=title]").eq(i).text();
                     String desc = element.select("p[class=message]").eq(i).text();
@@ -81,24 +82,41 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
             } catch (Exception e) {
                 //
             }
-            adapter = new MyNewsAdapter(getContext(), drawThreadNews());
-            lv.setAdapter(adapter);
             return "";
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            adapter = new MyNewsAdapter(getContext(), drawThreadNews());
+            lv.setAdapter(adapter);
             is_thread = false;
+            Toast.makeText(getContext(), R.string.news_is_reloaded,Toast.LENGTH_LONG).show();
         }
     }
     private void reloadPressed() {
-        if(!is_thread){
-            is_thread = true;
-            new GetNews().execute();
-            Toast.makeText(getContext(),"Wait, please.",Toast.LENGTH_LONG).show();
+        if(isOnline()) {
+            if (!is_thread) {
+                is_thread = true;
+                new GetNews().execute();
+                Toast.makeText(getContext(), R.string.please_wait, Toast.LENGTH_LONG).show();
+            }
+        }else{
+            Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_LONG).show();
         }
     }
+
+    public boolean isOnline() {
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+            int     exitValue = ipProcess.waitFor();
+            return (exitValue == 0);
+        }
+        catch (IOException | InterruptedException e)          { e.printStackTrace(); }
+        return false;
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

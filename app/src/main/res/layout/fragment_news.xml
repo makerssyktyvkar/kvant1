@@ -7,25 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.news.NewsFragment"
     android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
         <ListView
             android:id="@+id/list_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </LinearLayout>
-    <Button
-        android:textColor="@color/white_smoke"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/reload_btn"
-        android:layout_weight="1"
-        android:textSize="20dp"
-        android:textAllCaps="false"
-        android:background="@color/light_gray"
-        android:text="@string/reload"
-        android:textColorHighlight="@color/white"/>
+
+        <ImageButton
+            android:id="@+id/reload_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:src="@drawable/reload" />
+    </RelativeLayout>
 </LinearLayout>

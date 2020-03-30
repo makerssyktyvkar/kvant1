@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -27,7 +30,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         login_btn = findViewById(R.id.btn_come_in);
         login_et = findViewById(R.id.login);
         password_et = findViewById(R.id.password);
-        tw1 = findViewById(R.id.tw1);
         user = new User(this);
         if(getIntent().getIntExtra("type",0)==1){
             user.deleteAll();
@@ -36,15 +38,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(now.size()!=0){
             startMain(now.get(0));
         }
+        tw1 = findViewById(R.id.tw1);
         login_btn.setOnClickListener(this);
         registration_btn.setOnClickListener(this);
     }
 
     public void startMain(Pair<String, Integer> userData){
+        Toast.makeText(getApplicationContext(), R.string.please_wait, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(LoginActivity.this,MainActivity.class);
         intent.putExtra("type", userData.second);
         intent.putExtra("login", userData.first);
         startActivity(intent);
+    }
+
+    public boolean isOnline() {
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+            int     exitValue = ipProcess.waitFor();
+            return (exitValue == 0);
+        }
+        catch (IOException | InterruptedException e)          { e.printStackTrace(); }
+        return false;
     }
 
     @Override
@@ -56,19 +71,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.registration_btn:
                 Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(intent);
+                break;
             case R.id.btn_come_in:
-                String type = "pass";
-                try {
-                    type = new GetTypeOfUser(login, password).execute().get();
-                } catch (Exception e){
-                    //
+                if(isOnline()) {
+                    String type = "pass";
+                    try {
+                        type = new GetTypeOfUser(login, password).execute().get();
+                    } catch (Exception e) {
+                        //
+                    }
+                    int tp = Integer.parseInt(type);
+                    if (tp == 0) tw1.setText(R.string.NoSuchUsers);
+                    else {
+                        user.insert(login, password, tp);
+                        startMain(new Pair<>(login, tp));
+                    }
+                }else{
+                    tw1.setText(R.string.no_internet_connection);
                 }
-                int tp = Integer.valueOf(type);
-                if(tp==0) tw1.setText(R.string.NoSuchUsers);
-                else{
-                    user.insert(login,password, tp);
-                    startMain(new Pair<>(login,tp));
-                }
+                break;
         }
     }
 }

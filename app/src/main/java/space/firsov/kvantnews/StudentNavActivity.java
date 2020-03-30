@@ -2,6 +2,7 @@ package space.firsov.kvantnews;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -37,6 +38,8 @@ public class StudentNavActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         String username = getIntent().getStringExtra("student_name");
+        TextView student_username = findViewById(R.id.student_tv);
+        student_username.setText(username);
     }
 
 
