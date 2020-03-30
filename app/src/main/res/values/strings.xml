@@ -46,4 +46,5 @@
     <string name="exit">Выход</string>
     <string name="kvant_news">Kvant News</string>
     <string name="username">Username</string>
+    <string name="reload">Обновить</string>
 </resources>

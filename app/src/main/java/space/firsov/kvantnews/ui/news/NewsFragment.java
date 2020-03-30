@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,7 +28,8 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
     private static long back_pressed = -1;
     private NewsDB newsBD;
     private MyNewsAdapter adapter;
-    ListView lv;
+    private ListView lv;
+    private boolean is_thread = false;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -42,12 +44,10 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
             adapter = new MyNewsAdapter(getContext(), drawThreadNews());
             lv.setAdapter(adapter);
         }else{
-            try{
-                new GetNews().execute().get();
-            }catch(Exception e){
-                //
-            }
+            reloadPressed();
         }
+        Button reload_btn = (Button)root.findViewById(R.id.reload_btn);
+        reload_btn.setOnClickListener(this);
 
         return root;
     }
@@ -89,24 +89,20 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-
+            is_thread = false;
         }
     }
     private void reloadPressed() {
-        /*if (back_pressed + 2000 > System.currentTimeMillis()) {
-            try {
-                new GetNews().execute().get();
-            } catch (Exception e) {
-                //
-            }
+        if(!is_thread){
+            is_thread = true;
+            new GetNews().execute();
+            Toast.makeText(getContext(),"Wait, please.",Toast.LENGTH_LONG).show();
         }
-        back_pressed = System.currentTimeMillis();*/
-        Toast.makeText(getContext(),"Reload is ok",Toast.LENGTH_LONG).show();
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.news_container:
+            case R.id.reload_btn:
                 reloadPressed();
         }
     }

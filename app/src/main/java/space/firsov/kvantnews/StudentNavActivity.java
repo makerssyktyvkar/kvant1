@@ -2,7 +2,7 @@ package space.firsov.kvantnews;
 
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -14,7 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class StudentNavActivity extends AppCompatActivity{
+public class StudentNavActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -36,6 +36,7 @@ public class StudentNavActivity extends AppCompatActivity{
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        String username = getIntent().getStringExtra("student_name");
     }
 
 
@@ -52,4 +53,5 @@ public class StudentNavActivity extends AppCompatActivity{
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }

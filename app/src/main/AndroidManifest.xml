@@ -19,10 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".StudentNavActivity"
-            android:label="@string/title_activity_student_nav"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.ASSIST" />
@@ -44,7 +40,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StudentActivity">
+        <activity android:name=".StudentNavActivity">
             <intent-filter>
                 <action android:name="android.intent.action.ASSIST" />
 

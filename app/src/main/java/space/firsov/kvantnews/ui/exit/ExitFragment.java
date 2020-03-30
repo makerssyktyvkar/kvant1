@@ -1,5 +1,6 @@
 package space.firsov.kvantnews.ui.exit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,31 +8,24 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
+import space.firsov.kvantnews.LoginActivity;
 import space.firsov.kvantnews.R;
-import space.firsov.kvantnews.ui.posts.PostsViewModel;
-import space.firsov.kvantnews.ui.support.SupportViewModel;
+import space.firsov.kvantnews.StudentNavActivity;
 
 public class ExitFragment extends Fragment {
 
-    private PostsViewModel postsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ExitViewModel exitViewModel =
-                ViewModelProviders.of(this).get(ExitViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_exit, container, false);
-        final TextView textView = root.findViewById(R.id.text_exit);
-        exitViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        View root = inflater.inflate(R.layout.fragment_achievements, container, false);
+        startLoginActivity();
         return root;
+    }
+    private void startLoginActivity(){
+        Intent intent = new Intent(getContext(), LoginActivity.class);
+        intent.putExtra("type",1);
+        startActivity(intent);
     }
 }
