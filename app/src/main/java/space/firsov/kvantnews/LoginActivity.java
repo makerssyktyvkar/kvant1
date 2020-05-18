@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
@@ -84,12 +85,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if (tp == 0) tw1.setText(R.string.NoSuchUsers);
                     else {
                         user.insert(login, password, tp);
+                        switch(tp){
+                            case 2:
+                                findAllAboutStudent(login);
+                                break;
+                            /*
+                            case 3:
+                                findAllAboutParent(login);
+                                break;
+                            case 4:
+                                findAllAboutTeacher(login);
+                                break;*/
+                        }
                         startMain(new Pair<>(login, tp));
                     }
                 }else{
                     tw1.setText(R.string.no_internet_connection);
                 }
                 break;
+        }
+    }
+    private void findAllAboutStudent(String login){
+        try {
+            new GetStudentCourses(login, this).execute().get();
+        } catch (Exception e){
+            //
+        }
+        try {
+            new GetStudentCourseNews(login, this).execute().get();
+        } catch (Exception e){
+            //
         }
     }
 }

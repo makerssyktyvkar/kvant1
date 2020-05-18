@@ -60,6 +60,19 @@ class User {
         }
         return arr;
     }
+    String getLogin(){
+        @SuppressLint("Recycle") Cursor mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, null);
+        ArrayList<Pair<String, Integer>> arr = new ArrayList<>();
+        mCursor.moveToFirst();
+        if (!mCursor.isAfterLast()) {
+            do {
+                String login = mCursor.getString(NUM_COLUMN_LOGIN);
+                int type = Integer.parseInt(mCursor.getString(NUM_COLUMN_TYPE));
+                arr.add(new Pair<>(login, type));
+            } while (mCursor.moveToNext());
+        }
+        return arr.get(0).first;
+    }
 
     private class OpenHelper extends SQLiteOpenHelper {
 

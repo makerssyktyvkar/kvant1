@@ -72,10 +72,15 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
                 newsBD.deleteAll();
                 listNews.clear();
                 for(int i=0;i<element.size();i++){
-                    String title = element.select("h2[class=title]").eq(i).text();
-                    String desc = element.select("p[class=message]").eq(i).text();
-                    String time = element.select("p[class=time]").eq(i).text();
-                    String linkImage = element.select("img").eq(i).attr("src").substring(24);
+                    String title = element.eq(i).select("h2[class=title]").eq(0).text();
+                    String desc = element.eq(i).select("p[class=message]").eq(0).text();
+                    String time = element.eq(i).select("p[class=time]").eq(0).text();
+                    String linkImage;
+                    try{
+                        linkImage = element.eq(i).select("img").eq(0).attr("src").substring(24);
+                    }catch (Exception e){
+                        linkImage = "";
+                    }
                     listNews.add(new News(title, desc, linkImage, time));
                     newsBD.insert(title,desc,linkImage,time);
                 }

@@ -48,8 +48,7 @@ android:orientation="vertical" android:paddingBottom="5dp"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:id="@+id/news_image"
-            android:src="@drawable/common_google_signin_btn_icon_dark" />
+            android:id="@+id/news_image"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
