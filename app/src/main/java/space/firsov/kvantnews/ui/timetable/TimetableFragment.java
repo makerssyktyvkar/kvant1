@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,7 +24,7 @@ import space.firsov.kvantnews.R;
 import space.firsov.kvantnews.User;
 
 public class TimetableFragment extends Fragment {
-    private String login;
+    public String login;
     private ArrayList<Timetable> TimetableList = new ArrayList<>();
     private TimetableDB timetableDB;
     private TimetableAdapter adapter;
@@ -34,8 +35,12 @@ public class TimetableFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_timetable, container, false);
         lv = root.findViewById(R.id.timetable);
+        TextView textView = root.findViewById(R.id.text_timetable);
         timetableDB = new TimetableDB(root.getContext());
         TimetableList = timetableDB.selectAll();
+        User user = new User(getContext());
+        login = user.getLogin();
+        textView.setText(login);
 
         if (TimetableList.size()!=0){
             adapter = new TimetableAdapter(getContext(), drawThreadTimetable());
@@ -43,8 +48,6 @@ public class TimetableFragment extends Fragment {
         }else{
             loader();
         }
-        User user = new User(getActivity());
-        login = user.getLogin();
         return root;
     }
 
@@ -58,34 +61,32 @@ public class TimetableFragment extends Fragment {
 
     @SuppressLint("StaticFieldLeak")
     private class GetTimetable extends AsyncTask<String, Void, String>{
-
         @Override
         protected String doInBackground(String... strings) {
             String url = "http://kvantfp.000webhostapp.com/ReturnTimetableForStudent.php?login="+login;
             Document document = null;
             try {
                 document = Jsoup.connect(url).get();
+                Elements element = document.select("li[class=timetable-item]");
+                timetableDB.deleteAll();
+                TimetableList.clear();
+                for(int i=0;i<element.size();i++){
+                    String course = element.eq(i).select("p[class=name_course]").eq(0).text();
+                    String group = element.eq(i).select("p[class=name_group]").eq(0).text();
+                    String monday = element.eq(i).select("p[class=monday]").eq(0).text();
+                    String tuesday = element.eq(i).select("p[class=tuesday]").eq(0).text();
+                    String wednesday = element.eq(i).select("p[class=wednesday]").eq(0).text();
+                    String thursday = element.eq(i).select("p[class=thursday]").eq(0).text();
+                    String friday = element.eq(i).select("p[class=friday]").eq(0).text();
+                    String saturday = element.eq(i).select("p[class=saturday]").eq(0).text();
+                    String sunday = element.eq(i).select("p[class=sunday]").eq(0).text();
+                    TimetableList.add(new Timetable(course, group, monday, tuesday, wednesday, thursday, friday, saturday, sunday));
+                    timetableDB.insert(course, group, monday, tuesday, wednesday, thursday, friday, saturday, sunday);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            Elements element = document.select("li[class=timetable-item]");
-            timetableDB.deleteAll();
-            TimetableList.clear();
-            for(int i=0;i<element.size();i++){
-                String course = element.eq(i).select("p[class=name_course]").eq(0).text();
-                String group = element.eq(i).select("p[class=name_group]").eq(0).text();
-                String monday = element.eq(i).select("p[class=monday]").eq(0).text();
-                String tuesday = element.eq(i).select("p[class=tuesday]").eq(0).text();
-                String wednesday = element.eq(i).select("p[class=wednesday]").eq(0).text();
-                String thursday = element.eq(i).select("p[class=thursday]").eq(0).text();
-                String friday = element.eq(i).select("p[class=friday]").eq(0).text();
-                String saturday = element.eq(i).select("p[class=saturday]").eq(0).text();
-                String sunday = element.eq(i).select("p[class=sunday]").eq(0).text();
-                TimetableList.add(new Timetable(course, group, monday, tuesday, wednesday, thursday, friday, saturday, sunday));
-                timetableDB.insert(course, group, monday, tuesday, wednesday, thursday, friday, saturday, sunday);
-            }
-            return "";
+            return login;
         }
 
         @Override
@@ -94,7 +95,7 @@ public class TimetableFragment extends Fragment {
             adapter = new TimetableAdapter(getContext(), drawThreadTimetable());
             lv.setAdapter(adapter);
             is_thread = false;
-            Toast.makeText(getContext(), "Расписание",Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), s,Toast.LENGTH_LONG).show();
         }
 
     }

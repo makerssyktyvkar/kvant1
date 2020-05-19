@@ -37,12 +37,19 @@ public class TimetableAdapter extends ArrayAdapter<Timetable> {
         ((TextView)convertView.findViewById(R.id.course_name)).setText(timetable.course);
         ((TextView)convertView.findViewById(R.id.groupp)).setText(timetable.group);
         ((TextView)convertView.findViewById(R.id.monday)).setText(monday.equals("")? null: "Понедельник: "+monday);
+        if(monday.equals("")) ((TextView)convertView.findViewById(R.id.monday)).setHeight(0);
         ((TextView)convertView.findViewById(R.id.tuesday)).setText(tuesday.equals("")? null: "Вторник: " + tuesday);
+        if(tuesday.equals("")) ((TextView)convertView.findViewById(R.id.tuesday)).setHeight(0);
         ((TextView)convertView.findViewById(R.id.wednesday)).setText(wednesday.equals("")? null : "Среда: " + wednesday);
+        if(wednesday.equals("")) ((TextView)convertView.findViewById(R.id.wednesday)).setHeight(0);
         ((TextView)convertView.findViewById(R.id.thursday)).setText(thursday.equals("")? null: "Четверг: " + thursday);
+        if(thursday.equals("")) ((TextView)convertView.findViewById(R.id.thursday)).setHeight(0);
         ((TextView)convertView.findViewById(R.id.friday)).setText(friday.equals("")? null: "Пятница: " + friday);
+        if(friday.equals("")) ((TextView)convertView.findViewById(R.id.friday)).setHeight(0);
         ((TextView)convertView.findViewById(R.id.saturday)).setText(saturday.equals("")? null: "Суббота: " + saturday);
+        if(saturday.equals("")) ((TextView)convertView.findViewById(R.id.saturday)).setHeight(0);
         ((TextView)convertView.findViewById(R.id.sunday)).setText(sunday.equals("")? null: "Воскресенье: " + sunday);
+        if(sunday.equals("")) ((TextView)convertView.findViewById(R.id.sunday)).setHeight(0);
 
         return convertView;
     }
