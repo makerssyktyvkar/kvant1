@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import space.firsov.kvantnews.R;
 import space.firsov.kvantnews.User;
 
-public class TimetableFragment extends Fragment {
+public class TimetableFragment extends Fragment implements View.OnClickListener {
     public String login;
     private ArrayList<Timetable> TimetableList = new ArrayList<>();
     private TimetableDB timetableDB;
@@ -46,6 +47,8 @@ public class TimetableFragment extends Fragment {
         }else{
             loader();
         }
+        ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
+        reload_btn.setOnClickListener(this);
         return root;
     }
 
@@ -55,6 +58,15 @@ public class TimetableFragment extends Fragment {
             timetable[i] = TimetableList.get(i);
         }
         return timetable;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.reload_btn:
+                loader();
+                break;
+        }
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -93,20 +105,19 @@ public class TimetableFragment extends Fragment {
             adapter = new TimetableAdapter(getContext(), drawThreadTimetable());
             lv.setAdapter(adapter);
             is_thread = false;
-            Toast.makeText(getContext(), R.string.is_ready,Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.is_ready,Toast.LENGTH_SHORT).show();
         }
 
     }
-
     private void loader() {
         if (isOnline()) {
             if (!is_thread) {
                 is_thread=true;
                 new GetTimetable().execute();
-                Toast.makeText(getContext(), R.string.please_wait, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.please_wait, Toast.LENGTH_SHORT).show();
             }
         }else{
-            Toast.makeText(getContext(),R.string.no_internet_connection,Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(),R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
         }
     }
 

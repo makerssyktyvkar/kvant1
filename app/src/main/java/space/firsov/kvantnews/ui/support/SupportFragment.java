@@ -1,5 +1,6 @@
 package space.firsov.kvantnews.ui.support;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,7 +77,7 @@ public class SupportFragment extends Fragment  implements View.OnClickListener {
         if(isOnline()) {
             try {
                 new GetUserSupports(login, getContext()).execute().get();
-            }catch (Exception e) {
+            }catch (Exception e){
                 //
             }
             listSupports = supportsDB.selectAll();
