@@ -25,13 +25,11 @@ import java.util.ArrayList;
 import space.firsov.kvantnews.R;
 
 public class NewsFragment extends Fragment  implements View.OnClickListener {
-
     private ArrayList<News> listNews = new ArrayList<>();
     private NewsDB newsBD;
     private MyNewsAdapter adapter;
     private ListView lv;
     private boolean is_thread = false;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -39,7 +37,6 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
         lv =  (ListView) root.findViewById(R.id.list_container);
         newsBD = new NewsDB(root.getContext());
         listNews = newsBD.selectAll();
-
         if(listNews.size()!=0){
             adapter = new MyNewsAdapter(getContext(), drawThreadNews());
             lv.setAdapter(adapter);
@@ -60,8 +57,6 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
     }
     @SuppressLint("StaticFieldLeak")
     private class GetNews extends AsyncTask<String, Void, String> {
-
-
         @SuppressLint("WrongThread")
         @Override
         protected String doInBackground(String... args) {

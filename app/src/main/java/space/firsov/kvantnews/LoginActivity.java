@@ -116,5 +116,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } catch (Exception e){
             //
         }
+        try {
+            new GetUserSupports(login, this).execute().get();
+        } catch (Exception e){
+            //
+        }
     }
 }

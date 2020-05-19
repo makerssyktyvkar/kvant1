@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import space.firsov.kvantnews.R;
 
 public class TimetableFragment extends Fragment {
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_timetable, container, false);

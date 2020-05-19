@@ -92,8 +92,8 @@ public class NewsDB {
 					COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 					COLUMN_TITLE+ " TEXT, " +
 					COLUMN_MESSAGE + " TEXT, " +
-					COLUMN_IMAGE + " INT,"+
-					COLUMN_ADD_INFO+" INT);";
+					COLUMN_IMAGE + " TEXT,"+
+					COLUMN_ADD_INFO+" TEXT);";
 			db.execSQL(query);
 		}
 

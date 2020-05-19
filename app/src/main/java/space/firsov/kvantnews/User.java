@@ -10,7 +10,7 @@ import android.util.Pair;
 
 import java.util.ArrayList;
 
-class User {
+public class User {
 
     private static final String DATABASE_NAME = "simple.db";
     private static final int DATABASE_VERSION = 1;
@@ -28,7 +28,7 @@ class User {
 
     private SQLiteDatabase mDataBase;
 
-    User(Context context) {
+    public User(Context context) {
         OpenHelper mOpenHelper = new OpenHelper(context);
         mDataBase = mOpenHelper.getWritableDatabase();
     }
@@ -41,7 +41,7 @@ class User {
         mDataBase.insert(TABLE_NAME, null, cv);
     }
 
-    void deleteAll() {
+    public void deleteAll() {
         mDataBase.execSQL("DELETE FROM " + TABLE_NAME);
     }
 
@@ -60,7 +60,7 @@ class User {
         }
         return arr;
     }
-    String getLogin(){
+    public String getLogin(){
         @SuppressLint("Recycle") Cursor mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, null);
         ArrayList<Pair<String, Integer>> arr = new ArrayList<>();
         mCursor.moveToFirst();
@@ -95,5 +95,4 @@ class User {
             onCreate(db);
         }
     }
-
 }

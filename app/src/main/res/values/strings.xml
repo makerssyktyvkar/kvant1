@@ -51,4 +51,8 @@
     <string name="no_internet_connection">Отсутствует подключение к сети.</string>
     <string name="please_wait">Пожалуйста, подождите.</string>
     <string name="news_is_reloaded">Новости обновлены</string>
+    <string name="is_ready">Готово</string>
+    <string name="Your_question">Ваш вопрос</string>
+    <string name="submit">Отправить</string>
+    <string name="delete_support">Удалить обращение</string>
 </resources>

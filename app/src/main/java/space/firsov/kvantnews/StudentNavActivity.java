@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 public class StudentNavActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,6 @@ public class StudentNavActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_news, R.id.nav_timetable, R.id.nav_posts,
                 R.id.nav_achievements, R.id.nav_support, R.id.nav_settings, R.id.nav_exit)
@@ -40,6 +39,8 @@ public class StudentNavActivity extends AppCompatActivity {
         String username = getIntent().getStringExtra("student_name");
         TextView student_username = findViewById(R.id.student_tv);
         student_username.setText(username);
+        user = new User(this);
+        user.getLogin();
     }
 
 
@@ -56,5 +57,4 @@ public class StudentNavActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
 }
