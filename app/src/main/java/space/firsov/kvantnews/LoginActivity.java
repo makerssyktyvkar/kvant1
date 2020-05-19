@@ -13,7 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
+
+import space.firsov.kvantnews.ui.posts.GetStudentCourseNews;
+import space.firsov.kvantnews.ui.support.GetUserSupports;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{

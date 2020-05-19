@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import space.firsov.kvantnews.R;
-import space.firsov.kvantnews.courseNews;
 
 public class MyCourseNewsAdapter extends ArrayAdapter<courseNews> {
 

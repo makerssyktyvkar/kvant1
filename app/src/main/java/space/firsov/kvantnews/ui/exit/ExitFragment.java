@@ -5,16 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import space.firsov.kvantnews.CoursesNewsOfUserDB;
+import space.firsov.kvantnews.ui.posts.CoursesNewsOfUserDB;
 import space.firsov.kvantnews.LoginActivity;
 import space.firsov.kvantnews.R;
-import space.firsov.kvantnews.StudentNavActivity;
-import space.firsov.kvantnews.SupportsDB;
+import space.firsov.kvantnews.ui.support.SupportsDB;
 import space.firsov.kvantnews.User;
 
 public class ExitFragment extends Fragment {

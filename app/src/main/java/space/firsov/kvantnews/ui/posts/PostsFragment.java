@@ -15,11 +15,8 @@ import androidx.fragment.app.Fragment;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import space.firsov.kvantnews.CoursesNewsOfUserDB;
-import space.firsov.kvantnews.GetStudentCourseNews;
 import space.firsov.kvantnews.R;
 import space.firsov.kvantnews.User;
-import space.firsov.kvantnews.courseNews;
 
 public class PostsFragment extends Fragment  implements View.OnClickListener {
     private ArrayList<courseNews> listNews = new ArrayList<>();

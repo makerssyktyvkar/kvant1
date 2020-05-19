@@ -1,6 +1,5 @@
-package space.firsov.kvantnews;
+package space.firsov.kvantnews.ui.posts;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+
+import space.firsov.kvantnews.ui.posts.courseNews;
 
 
 public class CoursesNewsOfUserDB {

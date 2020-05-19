@@ -6,8 +6,6 @@ import android.os.AsyncTask;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import space.firsov.kvantnews.SupportsDB;
-
 public class DeleteSupportByID extends AsyncTask<String, Void, Integer> {
     private long id;
     private SupportsDB supportDB;

@@ -1,4 +1,4 @@
-package space.firsov.kvantnews;
+package space.firsov.kvantnews.ui.support;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+
+import space.firsov.kvantnews.ui.support.Support;
 
 public class SupportsDB {
 

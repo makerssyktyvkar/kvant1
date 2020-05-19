@@ -17,12 +17,8 @@ import androidx.fragment.app.Fragment;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
-import space.firsov.kvantnews.GetUserSupports;
 import space.firsov.kvantnews.R;
-import space.firsov.kvantnews.Support;
-import space.firsov.kvantnews.SupportsDB;
 import space.firsov.kvantnews.User;
 
 public class SupportFragment extends Fragment  implements View.OnClickListener {

@@ -1,4 +1,4 @@
-package space.firsov.kvantnews;
+package space.firsov.kvantnews.ui.support;
 
 public class Support {
     public String answer, question;

@@ -1,4 +1,4 @@
-package space.firsov.kvantnews;
+package space.firsov.kvantnews.ui.support;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+
+import space.firsov.kvantnews.ui.support.SupportsDB;
 
 public class GetUserSupports extends AsyncTask<String, Void, Integer> {
     private String login;

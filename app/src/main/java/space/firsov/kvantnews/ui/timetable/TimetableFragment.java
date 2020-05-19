@@ -35,12 +35,10 @@ public class TimetableFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_timetable, container, false);
         lv = root.findViewById(R.id.timetable);
-        TextView textView = root.findViewById(R.id.text_timetable);
         timetableDB = new TimetableDB(root.getContext());
         TimetableList = timetableDB.selectAll();
         User user = new User(getContext());
         login = user.getLogin();
-        textView.setText(login);
 
         if (TimetableList.size()!=0){
             adapter = new TimetableAdapter(getContext(), drawThreadTimetable());
@@ -95,7 +93,7 @@ public class TimetableFragment extends Fragment {
             adapter = new TimetableAdapter(getContext(), drawThreadTimetable());
             lv.setAdapter(adapter);
             is_thread = false;
-            Toast.makeText(getContext(), s,Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.is_ready,Toast.LENGTH_LONG).show();
         }
 
     }

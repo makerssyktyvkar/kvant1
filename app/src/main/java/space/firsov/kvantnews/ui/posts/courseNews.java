@@ -1,4 +1,4 @@
-package space.firsov.kvantnews;
+package space.firsov.kvantnews.ui.posts;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

@@ -5,9 +5,6 @@ import android.os.AsyncTask;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
-import space.firsov.kvantnews.SupportsDB;
 
 public class SubmitSupport extends AsyncTask<String, Void, Integer> {
     private String login, question;
