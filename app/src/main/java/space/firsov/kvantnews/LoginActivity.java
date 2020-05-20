@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +18,7 @@ import java.util.ArrayList;
 
 import space.firsov.kvantnews.ui.achievements.GetUserAchievements;
 import space.firsov.kvantnews.ui.news.GetNews;
-import space.firsov.kvantnews.ui.posts.GetStudentCourseNews;
+import space.firsov.kvantnews.ui.posts.GetCoursesNews;
 import space.firsov.kvantnews.ui.support.GetUserSupports;
 import space.firsov.kvantnews.ui.timetable.GetUserTimetable;
 
@@ -45,18 +44,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         ArrayList<Pair<String, Integer>> now = user.selectAll();
         if(now.size()!=0){
-            startMain(now.get(0));
+            startMain();
         }
         tw1 = findViewById(R.id.tw1);
         login_btn.setOnClickListener(this);
         registration_btn.setOnClickListener(this);
     }
 
-    public void startMain(Pair<String, Integer> userData){
-        Toast.makeText(getApplicationContext(), R.string.please_wait, Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-        intent.putExtra("type", userData.second);
-        intent.putExtra("login", userData.first);
+    private void startMain(){
+        Intent intent = new Intent(LoginActivity.this, StudentNavActivity.class);
         startActivity(intent);
     }
 
@@ -94,20 +90,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     int tp = Integer.parseInt(type);
                     if (tp == 0) tw1.setText(R.string.NoSuchUsers);
                     else {
-                        user.insert(login, password, tp);
+                        user.insert(login,tp);
+                        findAll(login);
                         switch(tp){
                             case 2:
                                 findAllAboutStudent(login);
                                 break;
-                            /*
                             case 3:
-                                findAllAboutParent(login);
+                                //
                                 break;
+                                /*
                             case 4:
                                 findAllAboutTeacher(login);
                                 break;*/
                         }
-                        startMain(new Pair<>(login, tp));
+                        startMain();
                     }
                 }else{
                     tw1.setText(R.string.no_internet_connection);
@@ -115,7 +112,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
-    private void findAllAboutStudent(String login){
+    private void findAll(String login){
         Toast.makeText(this, R.string.please_wait, Toast.LENGTH_LONG).show();
         try {
             new GetNews(this).execute().get();
@@ -123,17 +120,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             //
         }
         try {
-            new GetStudentCourses(login, this).execute().get();
-        } catch (Exception e){
-            //
-        }
-        try {
-            new GetStudentCourseNews(login, this).execute().get();
+            new GetCoursesNews(login, this).execute().get();
         } catch (Exception e){
             //
         }
         try {
             new GetUserSupports(login, this).execute().get();
+        } catch (Exception e){
+            //
+        }
+    }
+    private void findAllAboutStudent(String login){
+        try {
+            new GetStudentCourses(login, this).execute().get();
         } catch (Exception e){
             //
         }

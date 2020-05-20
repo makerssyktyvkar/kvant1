@@ -12,19 +12,17 @@ import java.util.ArrayList;
 
 public class User {
 
-    private static final String DATABASE_NAME = "simple.db";
+    private static final String DATABASE_NAME = "user.db";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "user";
 
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_LOGIN = "login";
-    private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_TYPE = "type";
 
     private static final int NUM_COLUMN_ID = 0;
     private static final int NUM_COLUMN_LOGIN = 1;
-    private static final int NUM_COLUMN_PASSWORD = 2;
-    private static final int NUM_COLUMN_TYPE = 3;
+    private static final int NUM_COLUMN_TYPE = 2;
 
     private SQLiteDatabase mDataBase;
 
@@ -33,10 +31,9 @@ public class User {
         mDataBase = mOpenHelper.getWritableDatabase();
     }
 
-    void insert(String login, String password, int type) {
+    void insert(String login, int type) {
         ContentValues cv=new ContentValues();
         cv.put(COLUMN_LOGIN, login);
-        cv.put(COLUMN_PASSWORD, password);
         cv.put(COLUMN_TYPE, type);
         mDataBase.insert(TABLE_NAME, null, cv);
     }
@@ -61,17 +58,10 @@ public class User {
         return arr;
     }
     public String getLogin(){
-        @SuppressLint("Recycle") Cursor mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, null);
-        ArrayList<Pair<String, Integer>> arr = new ArrayList<>();
-        mCursor.moveToFirst();
-        if (!mCursor.isAfterLast()) {
-            do {
-                String login = mCursor.getString(NUM_COLUMN_LOGIN);
-                int type = Integer.parseInt(mCursor.getString(NUM_COLUMN_TYPE));
-                arr.add(new Pair<>(login, type));
-            } while (mCursor.moveToNext());
-        }
-        return arr.get(0).first;
+        return this.selectAll().get(0).first;
+    }
+    public int getType(){
+        return this.selectAll().get(0).second;
     }
 
     private class OpenHelper extends SQLiteOpenHelper {
@@ -85,7 +75,6 @@ public class User {
             String query = "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_LOGIN+ " TEXT, " +
-                    COLUMN_PASSWORD + " TEXT, " +
                     COLUMN_TYPE + " INTEGER);";
             db.execSQL(query);
         }

@@ -36,11 +36,8 @@ public class StudentNavActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        String username = getIntent().getStringExtra("student_name");
         TextView student_username = findViewById(R.id.student_tv);
-        student_username.setText(username);
-        user = new User(this);
-        user.getLogin();
+        student_username.setText(new User(this).getLogin());
     }
 
 

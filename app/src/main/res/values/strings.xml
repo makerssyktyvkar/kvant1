@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Your_question">Ваш вопрос</string>
+    <string name="Your_question">Введите ваш вопрос</string>
     <string name="submit">Отправить</string>
     <string name="is_ready">Готово</string>
 </resources>
