@@ -1,9 +1,12 @@
 package space.firsov.kvantnews;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,8 +17,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import space.firsov.kvantnews.ui.achievements.GetUserAchievements;
+import space.firsov.kvantnews.ui.news.GetNews;
 import space.firsov.kvantnews.ui.posts.GetStudentCourseNews;
 import space.firsov.kvantnews.ui.support.GetUserSupports;
+import space.firsov.kvantnews.ui.timetable.GetUserTimetable;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
@@ -76,6 +82,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);
                 break;
             case R.id.btn_come_in:
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
                 if(isOnline()) {
                     String type = "pass";
                     try {
@@ -108,6 +116,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
     private void findAllAboutStudent(String login){
+        Toast.makeText(this, R.string.please_wait, Toast.LENGTH_LONG).show();
+        try {
+            new GetNews(this).execute().get();
+        } catch (Exception e){
+            //
+        }
         try {
             new GetStudentCourses(login, this).execute().get();
         } catch (Exception e){
@@ -120,6 +134,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         try {
             new GetUserSupports(login, this).execute().get();
+        } catch (Exception e){
+            //
+        }
+        try {
+            new GetUserAchievements(login, this).execute().get();
+        } catch (Exception e){
+            //
+        }
+        try {
+            new GetUserTimetable(login, this).execute().get();
         } catch (Exception e){
             //
         }
