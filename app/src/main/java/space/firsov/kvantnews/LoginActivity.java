@@ -101,10 +101,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             case 3:
                                 findAllAboutParent(login);
                                 break;
-                                /*
                             case 4:
                                 findAllAboutTeacher(login);
-                                break;*/
+                                break;
                         }
                         startMain();
                     }
@@ -161,6 +160,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             } catch (Exception e) {
                 //
             }
+        }
+    }
+    private void findAllAboutTeacher(String login){
+        try {
+            new GetUserAchievements(login, this).execute().get();
+        } catch (Exception e){
+            //
+        }
+        try {
+            new GetUserTimetable(login, this).execute().get();
+        } catch (Exception e){
+            //
         }
     }
 }

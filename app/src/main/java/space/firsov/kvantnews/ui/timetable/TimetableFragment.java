@@ -63,7 +63,7 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
                 mainChildName.setText(mainChild);
                 showInformationAbout(mainChild);
             }
-        }else if(type == 2){
+        }else if(type == 2 || type == 4){
             mainChildName.getLayoutParams().height = 0;
             showInformationAbout(login);
         }
@@ -96,7 +96,7 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.reload_btn:
-                if(type == 2) {
+                if(type == 2 || type == 4) {
                     loader();
                 }else if(type == 3){
                     loader(mainChild);
@@ -128,7 +128,7 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
         }
         @Override
         protected String doInBackground(String... strings) {
-            String url = "http://kvantfp.000webhostapp.com/ReturnTimetableForStudent.php?login="+name;
+            String url = "http://kvantfp.000webhostapp.com/ReturnTimetable.php?login="+name;
             Document document = null;
             try {
                 document = Jsoup.connect(url).get();
@@ -160,7 +160,6 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
             adapter = new TimetableAdapter(getContext(), drawThreadTimetable());
             lv.setAdapter(adapter);
             is_thread = false;
-            Toast.makeText(getContext(), R.string.is_ready,Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -169,7 +168,6 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
             if (!is_thread) {
                 is_thread=true;
                 new GetTimetable(login).execute();
-                Toast.makeText(getContext(), R.string.please_wait, Toast.LENGTH_SHORT).show();
             }
         }else{
             Toast.makeText(getContext(),R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
@@ -180,7 +178,6 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
             if (!is_thread) {
                 is_thread=true;
                 new GetTimetable(name).execute();
-                Toast.makeText(getContext(), R.string.please_wait, Toast.LENGTH_SHORT).show();
             }
         }else{
             Toast.makeText(getContext(),R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
