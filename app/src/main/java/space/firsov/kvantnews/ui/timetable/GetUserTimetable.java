@@ -25,7 +25,7 @@ public class GetUserTimetable extends AsyncTask<String, Void, Integer> {
         try {
             document = Jsoup.connect(url).get();
             Elements element = document.select("li[class=timetable-item]");
-            timetableDB.deleteAll();
+            timetableDB.delete(login);
             for(int i=0;i<element.size();i++){
                 String course = element.eq(i).select("p[class=name_course]").eq(0).text();
                 String group = element.eq(i).select("p[class=name_group]").eq(0).text();
@@ -36,7 +36,7 @@ public class GetUserTimetable extends AsyncTask<String, Void, Integer> {
                 String friday = element.eq(i).select("p[class=friday]").eq(0).text();
                 String saturday = element.eq(i).select("p[class=saturday]").eq(0).text();
                 String sunday = element.eq(i).select("p[class=sunday]").eq(0).text();
-                timetableDB.insert(course, group, monday, tuesday, wednesday, thursday, friday, saturday, sunday);
+                timetableDB.insert(course, group, monday, tuesday, wednesday, thursday, friday, saturday, sunday,login);
             }
         } catch (Exception e) {
             //

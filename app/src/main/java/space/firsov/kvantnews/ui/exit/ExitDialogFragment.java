@@ -18,6 +18,7 @@ import space.firsov.kvantnews.User;
 import space.firsov.kvantnews.ui.achievements.AchievementsDB;
 import space.firsov.kvantnews.ui.posts.CoursesNewsOfUserDB;
 import space.firsov.kvantnews.ui.support.SupportsDB;
+import space.firsov.kvantnews.ui.timetable.ChildrenDB;
 import space.firsov.kvantnews.ui.timetable.TimetableDB;
 
 public class ExitDialogFragment extends AppCompatDialogFragment {
@@ -37,6 +38,8 @@ public class ExitDialogFragment extends AppCompatDialogFragment {
                 supportsDB.deleteAll();
                 TimetableDB timetableDB = new TimetableDB(getContext());
                 timetableDB.deleteAll();
+                ChildrenDB childrenDB = new ChildrenDB(getContext());
+                childrenDB.deleteAll();
                 AchievementsDB achievementsDB = new AchievementsDB(getContext());
                 achievementsDB.deleteAll();
                 User user = new User(getContext());

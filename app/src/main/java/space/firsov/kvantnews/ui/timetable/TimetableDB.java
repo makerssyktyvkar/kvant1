@@ -25,6 +25,7 @@ public class TimetableDB {
     private static final String COLUMN_FRIDAY = "friday";
     private static final String COLUMN_SATURDAY = "saturday";
     private static final String COLUMN_SUNDAY = "sunday";
+    private static final String COLUMN_LOGIN = "login";
 
     private static final int NUM_COLUMN_ID = 0;
     private static final int NUM_COLUMN_COURSE = 1;
@@ -36,6 +37,7 @@ public class TimetableDB {
     private static final int NUM_COLUMN_FRIDAY = 7;
     private static final int NUM_COLUMN_SATURDAY = 8;
     private static final int NUM_COLUMN_SUNDAY = 9;
+    private static final int NUM_COLUMN_LOGIN = 10;
     public static int maxId = 0;
 
     private SQLiteDatabase mDataBase;
@@ -45,7 +47,7 @@ public class TimetableDB {
         mDataBase = mOpenHelper.getWritableDatabase();
     }
 
-    public long insert(String course, String group, String monday, String tuesday, String wednesday, String thursday, String friday, String saturday, String sunday) {
+    public long insert(String course, String group, String monday, String tuesday, String wednesday, String thursday, String friday, String saturday, String sunday, String login) {
         ContentValues cv=new ContentValues();
         cv.put(COLUMN_COURSE, course);
         cv.put(COLUMN_GROUP, group);
@@ -56,10 +58,11 @@ public class TimetableDB {
         cv.put(COLUMN_FRIDAY,friday);
         cv.put(COLUMN_SATURDAY,saturday);
         cv.put(COLUMN_SUNDAY,sunday);
+        cv.put(COLUMN_LOGIN,login);
         return mDataBase.insert(TABLE_NAME, null, cv);
     }
 
-    public int update(String course, String group, String monday, String tuesday, String wednesday, String thursday, String friday, String saturday, String sunday){
+    public int update(String course, String group, String monday, String tuesday, String wednesday, String thursday, String friday, String saturday, String sunday, String login){
         ContentValues cv=new ContentValues();
         maxId++;
         cv.put(COLUMN_COURSE, course);
@@ -71,24 +74,49 @@ public class TimetableDB {
         cv.put(COLUMN_FRIDAY,friday);
         cv.put(COLUMN_SATURDAY,saturday);
         cv.put(COLUMN_SUNDAY,sunday);
+        cv.put(COLUMN_LOGIN,login);
         return mDataBase.update(TABLE_NAME, cv, COLUMN_ID + " = ?",new String[] { String.valueOf(maxId)});
     }
 
     public void deleteAll()  {
-        mDataBase.delete(TABLE_NAME, null, null);
+        try{
+            mDataBase.delete(TABLE_NAME, null, null);
+        }catch (Exception e){
+            //
+        }
     }
 
-    public void delete(long id) {
-        mDataBase.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[] { String.valueOf(id) });
+    public void delete(String login) {
+        try {
+            mDataBase.delete(TABLE_NAME, COLUMN_LOGIN + " = ?", new String[] { login });
+        }catch (Exception e){
+            String query = "CREATE TABLE " + TABLE_NAME + " (" +
+                    COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_COURSE+ " TEXT, " +
+                    COLUMN_GROUP + " TEXT, " +
+                    COLUMN_MONDAY + " TEXT, " +
+                    COLUMN_TUESDAY + " TEXT, " +
+                    COLUMN_WEDNESDAY + " TEXT, " +
+                    COLUMN_THURSDAY + " TEXT, " +
+                    COLUMN_FRIDAY + " TEXT, " +
+                    COLUMN_SATURDAY + " TEXT, " +
+                    COLUMN_SUNDAY + " TEXT, " +
+                    COLUMN_LOGIN + " TEXT);";
+            mDataBase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+            mDataBase.execSQL(query);
+        }
+
     }
 
-    public ArrayList<Timetable> selectAll() {
+    public ArrayList<Timetable> selectAll(String login) {
         @SuppressLint("Recycle") Cursor mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, null);
 
         ArrayList<Timetable> arr = new ArrayList<>();
         mCursor.moveToFirst();
         if (!mCursor.isAfterLast()) {
             do {
+                String log1 = mCursor.getString(NUM_COLUMN_LOGIN);
+                if(!log1.equals(login)) continue;
                 long id = mCursor.getLong(NUM_COLUMN_ID);
                 String course = mCursor.getString(NUM_COLUMN_COURSE);
                 String group = mCursor.getString(NUM_COLUMN_GROUP);
@@ -123,7 +151,8 @@ public class TimetableDB {
                     COLUMN_THURSDAY + " TEXT, " +
                     COLUMN_FRIDAY + " TEXT, " +
                     COLUMN_SATURDAY + " TEXT, " +
-                    COLUMN_SUNDAY + " TEXT);";
+                    COLUMN_SUNDAY + " TEXT, " +
+                    COLUMN_LOGIN + " TEXT);";
             db.execSQL(query);
         }
 

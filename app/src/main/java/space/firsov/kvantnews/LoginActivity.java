@@ -20,6 +20,8 @@ import space.firsov.kvantnews.ui.achievements.GetUserAchievements;
 import space.firsov.kvantnews.ui.news.GetNews;
 import space.firsov.kvantnews.ui.posts.GetCoursesNews;
 import space.firsov.kvantnews.ui.support.GetUserSupports;
+import space.firsov.kvantnews.ui.timetable.ChildrenDB;
+import space.firsov.kvantnews.ui.timetable.GetChildren;
 import space.firsov.kvantnews.ui.timetable.GetUserTimetable;
 
 
@@ -97,7 +99,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 findAllAboutStudent(login);
                                 break;
                             case 3:
-                                //
+                                findAllAboutParent(login);
                                 break;
                                 /*
                             case 4:
@@ -145,6 +147,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             new GetUserTimetable(login, this).execute().get();
         } catch (Exception e){
             //
+        }
+    }
+    private void findAllAboutParent(String login){
+        try{
+            new GetChildren(login,this);
+        }catch (Exception e){
+            //
+        }
+        for(String childName : new ChildrenDB(this).selectAll()) {
+            try {
+                new GetUserTimetable(childName, this).execute().get();
+            } catch (Exception e) {
+                //
+            }
         }
     }
 }

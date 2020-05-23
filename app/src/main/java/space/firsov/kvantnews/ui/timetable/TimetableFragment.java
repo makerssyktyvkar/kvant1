@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,7 +27,11 @@ import space.firsov.kvantnews.R;
 import space.firsov.kvantnews.User;
 
 public class TimetableFragment extends Fragment implements View.OnClickListener {
-    public String login;
+    private String login;
+    private int type;
+    private ArrayList<String> childrenNames;
+    private String mainChild;
+    private Button mainChildName;
     private ArrayList<Timetable> TimetableList = new ArrayList<>();
     private TimetableDB timetableDB;
     private TimetableAdapter adapter;
@@ -36,20 +42,46 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_timetable, container, false);
         lv = root.findViewById(R.id.timetable);
-        timetableDB = new TimetableDB(root.getContext());
-        TimetableList = timetableDB.selectAll();
+        mainChildName = (Button)root.findViewById(R.id.main_child_name);
         User user = new User(getContext());
         login = user.getLogin();
+        type = user.getType();
+        if(type == 3){
+            childrenNames = new ChildrenDB(getContext()).selectAll();
+            if(childrenNames.size() == 0){
+                try {
+                    new GetChildren(login, getContext()).execute().get();
+                }catch (Exception e){
+                    //
+                }
+                childrenNames = new ChildrenDB(getContext()).selectAll();
+            }
+            if(childrenNames.size() == 0){
+                mainChildName.setText(R.string.you_havent_children);
+            }else{
+                mainChild = childrenNames.get(0);
+                mainChildName.setText(mainChild);
+                showInformationAbout(mainChild);
+            }
+        }else if(type == 2){
+            mainChildName.getLayoutParams().height = 0;
+            showInformationAbout(login);
+        }
+        ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
+        reload_btn.setOnClickListener(this);
+        mainChildName.setOnClickListener(this);
+        return root;
+    }
 
+    private void showInformationAbout(String name){
+        timetableDB = new TimetableDB(getContext());
+        TimetableList = timetableDB.selectAll(name);
         if (TimetableList.size()!=0){
             adapter = new TimetableAdapter(getContext(), drawThreadTimetable());
             lv.setAdapter(adapter);
         }else{
-            loader();
+            loader(name);
         }
-        ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
-        reload_btn.setOnClickListener(this);
-        return root;
     }
 
     private Timetable[] drawThreadTimetable(){
@@ -64,21 +96,44 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.reload_btn:
-                loader();
+                if(type == 2) {
+                    loader();
+                }else if(type == 3){
+                    loader(mainChild);
+                }
                 break;
+            case R.id.main_child_name:
+                PopupMenu popupMenu = new PopupMenu(getContext(),v);
+                for(int i=0;i<childrenNames.size();i++) {
+                    popupMenu.getMenu().add(0, i, 0, childrenNames.get(i));
+                }
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        mainChild = childrenNames.get(item.getItemId());
+                        mainChildName.setText(mainChild);
+                        loader(mainChild);
+                        return false;
+                    }
+                });
+                popupMenu.show();
         }
     }
 
     @SuppressLint("StaticFieldLeak")
     private class GetTimetable extends AsyncTask<String, Void, String>{
+        private String name;
+        GetTimetable(String name){
+            this.name = name;
+        }
         @Override
         protected String doInBackground(String... strings) {
-            String url = "http://kvantfp.000webhostapp.com/ReturnTimetableForStudent.php?login="+login;
+            String url = "http://kvantfp.000webhostapp.com/ReturnTimetableForStudent.php?login="+name;
             Document document = null;
             try {
                 document = Jsoup.connect(url).get();
                 Elements element = document.select("li[class=timetable-item]");
-                timetableDB.deleteAll();
+                timetableDB.delete(name);
                 TimetableList.clear();
                 for(int i=0;i<element.size();i++){
                     String course = element.eq(i).select("p[class=name_course]").eq(0).text();
@@ -91,12 +146,12 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
                     String saturday = element.eq(i).select("p[class=saturday]").eq(0).text();
                     String sunday = element.eq(i).select("p[class=sunday]").eq(0).text();
                     TimetableList.add(new Timetable(course, group, monday, tuesday, wednesday, thursday, friday, saturday, sunday));
-                    timetableDB.insert(course, group, monday, tuesday, wednesday, thursday, friday, saturday, sunday);
+                    timetableDB.insert(course, group, monday, tuesday, wednesday, thursday, friday, saturday, sunday, login);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return login;
+            return "";
         }
 
         @Override
@@ -113,7 +168,18 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
         if (isOnline()) {
             if (!is_thread) {
                 is_thread=true;
-                new GetTimetable().execute();
+                new GetTimetable(login).execute();
+                Toast.makeText(getContext(), R.string.please_wait, Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(getContext(),R.string.no_internet_connection,Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void loader(String name) {
+        if (isOnline()) {
+            if (!is_thread) {
+                is_thread=true;
+                new GetTimetable(name).execute();
                 Toast.makeText(getContext(), R.string.please_wait, Toast.LENGTH_SHORT).show();
             }
         }else{
