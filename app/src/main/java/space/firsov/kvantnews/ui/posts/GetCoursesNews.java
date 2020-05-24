@@ -24,6 +24,7 @@ public class GetCoursesNews extends AsyncTask<String, Void, Integer> {
             Elements element = document.select("li[class=news-item]");
             coursesNewsOfUserDB.deleteAll();
             for (int i = 0; i < element.size(); i++) {
+                String id_news = element.eq(i).select("p[class=id_news]").eq(0).text();
                 String name = element.eq(i).select("p[class=course_name]").eq(0).text();
                 String title = element.eq(i).select("h2[class=title]").eq(0).text();
                 String message = element.eq(i).select("p[class=message]").eq(0).text();
@@ -34,7 +35,7 @@ public class GetCoursesNews extends AsyncTask<String, Void, Integer> {
                 }catch (Exception e){
                     linkImage = "";
                 }
-                coursesNewsOfUserDB.insert(name, title,message,linkImage,time);
+                coursesNewsOfUserDB.insert(id_news, name, title,message,linkImage,time);
             }
         } catch (Exception e) {
             //

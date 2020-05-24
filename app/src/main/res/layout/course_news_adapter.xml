@@ -19,14 +19,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Название курса"
-                android:id="@+id/course_name"
-                android:textSize="20sp"
-                android:textColor="@color/news_title"
-                android:layout_marginBottom="5dp"/>
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Название курса"
+                    android:id="@+id/course_name"
+                    android:textSize="20sp"
+                    android:textColor="@color/news_title"
+                    android:layout_marginBottom="5dp"/>
+                <ImageButton
+                    android:id="@+id/change_course_news_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/change"
+                    android:scaleType="centerCrop"
+                    android:background="@null"/>
+                <ImageButton
+                    android:id="@+id/delete_course_news_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/delete"
+                    android:scaleType="centerCrop"
+                    android:background="@null"/>
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +63,6 @@
                 android:textSize="15sp"
                 android:textColor="@color/news_time"
                 />
-
         </LinearLayout>
     </LinearLayout>
 

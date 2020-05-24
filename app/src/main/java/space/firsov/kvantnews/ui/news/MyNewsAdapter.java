@@ -30,7 +30,13 @@ public class MyNewsAdapter extends ArrayAdapter<News> {
             ((TextView) convertView.findViewById(R.id.title)).setText(news.title);
             ((TextView) convertView.findViewById(R.id.message)).setText(String.valueOf(news.message));
             ((TextView) convertView.findViewById(R.id.date)).setText(String.valueOf(news.additionalInfo));
-            if(news.image != null) ((ImageView) convertView.findViewById(R.id.news_image)).setImageBitmap(news.image);
+            if(news.image != null){
+                ((ImageView) convertView.findViewById(R.id.news_image)).setVisibility(View.VISIBLE);
+                ((ImageView) convertView.findViewById(R.id.news_image)).setImageBitmap(news.image);
+            }
+            else{
+                ((ImageView) convertView.findViewById(R.id.news_image)).setVisibility(View.GONE);
+            }
 
             return convertView;
         }

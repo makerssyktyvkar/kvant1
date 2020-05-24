@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     private void findAllAboutStudent(String login){
         try {
-            new GetStudentCourses(login, this).execute().get();
+            new GetCourses(login, this).execute().get();
         } catch (Exception e){
             //
         }
@@ -164,13 +164,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     private void findAllAboutTeacher(String login){
         try {
-            new GetUserAchievements(login, this).execute().get();
+            new GetCourses(login, this).execute().get();
         } catch (Exception e){
             //
         }
         try {
             new GetUserTimetable(login, this).execute().get();
         } catch (Exception e){
+            //
+        }
+        try{
+            new GetChildren(login,this);
+        }catch (Exception e){
             //
         }
     }

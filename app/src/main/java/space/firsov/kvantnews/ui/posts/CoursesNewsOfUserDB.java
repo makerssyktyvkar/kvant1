@@ -39,8 +39,9 @@ public class CoursesNewsOfUserDB {
         mDataBase = mOpenHelper.getWritableDatabase();
     }
 
-    public long insert(String courseName, String title,String message,String image,String addInfo) {
+    public long insert(String id_news, String courseName, String title,String message,String image,String addInfo) {
         ContentValues cv=new ContentValues();
+        cv.put(COLUMN_ID, id_news);
         cv.put(COLUMN_NAME_COURSE, courseName);
         cv.put(COLUMN_TITLE, title);
         cv.put(COLUMN_MESSAGE, message);
@@ -48,8 +49,18 @@ public class CoursesNewsOfUserDB {
         cv.put(COLUMN_ADD_INFO, addInfo);
         return mDataBase.insert(TABLE_NAME, null, cv);
     }
+    public long insert(courseNews courseName) {
+        ContentValues cv=new ContentValues();
+        cv.put(COLUMN_ID, courseName.id_news);
+        cv.put(COLUMN_NAME_COURSE, courseName.courseName);
+        cv.put(COLUMN_TITLE, courseName.title);
+        cv.put(COLUMN_MESSAGE, courseName.message);
+        cv.put(COLUMN_IMAGE, courseName.imageString);
+        cv.put(COLUMN_ADD_INFO, courseName.additionalInfo);
+        return mDataBase.insert(TABLE_NAME, null, cv);
+    }
 
-    public int update(String courseName, String title,String message,String image,String addInfo) {
+    public int update(String id_news, String courseName, String title,String message,String image,String addInfo) {
         ContentValues cv=new ContentValues();
         maxId++;
         cv.put(COLUMN_NAME_COURSE, courseName);
@@ -57,15 +68,15 @@ public class CoursesNewsOfUserDB {
         cv.put(COLUMN_MESSAGE, message);
         cv.put(COLUMN_IMAGE, image);
         cv.put(COLUMN_ADD_INFO, addInfo);
-        return mDataBase.update(TABLE_NAME, cv, COLUMN_ID + " = ?",new String[] { String.valueOf(maxId)});
+        return mDataBase.update(TABLE_NAME, cv, COLUMN_ID + " = ?",new String[] { id_news});
     }
 
     public void deleteAll() {
         mDataBase.delete(TABLE_NAME, null, null);
     }
 
-    public void delete(long id) {
-        mDataBase.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[] { String.valueOf(id) });
+    public void delete(String id) {
+        mDataBase.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[] { id });
     }
 
 
@@ -77,13 +88,13 @@ public class CoursesNewsOfUserDB {
         mCursor.moveToFirst();
         if (!mCursor.isAfterLast()) {
             do {
-                long id = mCursor.getLong(NUM_COLUMN_ID);
+                String id = mCursor.getString(NUM_COLUMN_ID);
                 String courseName = mCursor.getString(NUM_COLUMN_NAME_COURSE);
                 String title = mCursor.getString(NUM_COLUMN_TITLE);
                 String message = mCursor.getString(NUM_COLUMN_MESSAGE);
                 String image = mCursor.getString(NUM_COLUMN_IMAGE);
                 String addInfo = mCursor.getString(NUM_COLUMN_ADD_INFO);
-                arr.add(new courseNews(courseName,title,message,image,addInfo));
+                arr.add(new courseNews(id, courseName,title,message,image,addInfo));
             } while (mCursor.moveToNext());
         }
         return arr;
@@ -97,7 +108,7 @@ public class CoursesNewsOfUserDB {
         @Override
         public void onCreate(SQLiteDatabase db) {
             String query = "CREATE TABLE " + TABLE_NAME + " (" +
-                    COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_ID + " TEXT, " +
                     COLUMN_NAME_COURSE+ " TEXT, " +
                     COLUMN_TITLE+ " TEXT, " +
                     COLUMN_MESSAGE + " TEXT, " +

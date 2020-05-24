@@ -34,8 +34,8 @@ public class TimetableAdapter extends ArrayAdapter<Timetable> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.timetable_adapter, null);
         }
 
-        ((TextView)convertView.findViewById(R.id.course_name)).setText(timetable.course);
-        ((TextView)convertView.findViewById(R.id.groupp)).setText(timetable.group);
+        ((TextView)convertView.findViewById(R.id.course_name)).setText("Курс: " + timetable.course);
+        ((TextView)convertView.findViewById(R.id.groupp)).setText("Группа: " + timetable.group);
         ((TextView)convertView.findViewById(R.id.monday)).setText(monday.equals("")? null: "Понедельник: "+monday);
         if(monday.equals("")) ((TextView)convertView.findViewById(R.id.monday)).setHeight(0);
         ((TextView)convertView.findViewById(R.id.tuesday)).setText(tuesday.equals("")? null: "Вторник: " + tuesday);

@@ -18,7 +18,7 @@ public class GetChildren extends AsyncTask<String, Void, Integer> {
 
     @Override
     protected Integer doInBackground(String... args) {
-        String url = "http://kvantfp.000webhostapp.com/ReturnChildrenForParent.php?login=" + login;
+        String url = "http://kvantfp.000webhostapp.com/ReturnChildren.php?login=" + login;
         Document document = null;
         try {
             document = Jsoup.connect(url).get();

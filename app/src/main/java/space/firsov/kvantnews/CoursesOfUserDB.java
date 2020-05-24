@@ -12,7 +12,7 @@ import androidx.annotation.IntegerRes;
 
 import java.util.ArrayList;
 
-class CoursesOfUserDB {
+public class CoursesOfUserDB {
 
     private static final String DATABASE_NAME = "courses_db.db";
     private static final int DATABASE_VERSION = 1;
@@ -26,7 +26,7 @@ class CoursesOfUserDB {
 
     private SQLiteDatabase mDataBase;
 
-    CoursesOfUserDB(Context context) {
+    public CoursesOfUserDB(Context context) {
         OpenHelper mOpenHelper = new OpenHelper(context);
         mDataBase = mOpenHelper.getWritableDatabase();
     }
@@ -38,12 +38,12 @@ class CoursesOfUserDB {
         mDataBase.insert(TABLE_NAME, null, cv);
     }
 
-    void deleteAll() {
+    public void deleteAll() {
         mDataBase.execSQL("DELETE FROM " + TABLE_NAME);
     }
 
 
-    ArrayList<Pair<Integer, String>> selectAll() {
+    public ArrayList<Pair<Integer, String>> selectAll() {
         @SuppressLint("Recycle") Cursor mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, null);
 
         ArrayList<Pair<Integer, String>> arr = new ArrayList<>();
@@ -56,6 +56,16 @@ class CoursesOfUserDB {
             } while (mCursor.moveToNext());
         }
         return arr;
+    }
+
+    public int getID(String courseName){
+        ArrayList<Pair<Integer,String>> tmp = this.selectAll();
+        int i = 0;
+        while(!tmp.get(i).second.equals(courseName)){
+            i++;
+            if(i >= tmp.size()) break;
+        }
+        return tmp.get(i).first;
     }
 
     private class OpenHelper extends SQLiteOpenHelper {

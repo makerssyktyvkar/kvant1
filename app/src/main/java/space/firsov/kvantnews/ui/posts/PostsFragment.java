@@ -1,10 +1,14 @@
 package space.firsov.kvantnews.ui.posts;
 
+
+import android.content.ClipData;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -20,8 +24,10 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import space.firsov.kvantnews.CoursesOfUserDB;
 import space.firsov.kvantnews.R;
 import space.firsov.kvantnews.User;
+
 
 public class PostsFragment extends Fragment  implements View.OnClickListener {
     private ArrayList<courseNews> listNews = new ArrayList<>();
@@ -40,23 +46,20 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
         newsBD = new CoursesNewsOfUserDB(root.getContext());
         listNews = newsBD.selectAll();
         if(listNews.size()!=0){
-            adapter = new MyCourseNewsAdapter(getContext(), drawThreadNews());
+            adapter = new MyCourseNewsAdapter(getContext(), R.layout.fragment_posts, listNews);
             lv.setAdapter(adapter);
         }else{
             reloadPressed();
         }
         ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
+        ImageButton add_news_btn = (ImageButton)root.findViewById(R.id.add_news_btn);
         reload_btn.setOnClickListener(this);
-
-        return root;
-    }
-
-    private courseNews[] drawThreadNews (){
-        courseNews[] news = new courseNews[listNews.size()];
-        for(int i=0;i<listNews.size();i++){
-            news[i] = listNews.get(i);
+        if(type != 4){
+            add_news_btn.setVisibility(View.GONE);
+        }else{
+            add_news_btn.setOnClickListener(this);
         }
-        return news;
+        return root;
     }
 
     private void reloadPressed() {
@@ -77,6 +80,7 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
                 Elements element = document.select("li[class=news-item]");
                 newsBD.deleteAll();
                 for (int i = 0; i < element.size(); i++) {
+                    String id_news = element.eq(i).select("p[class=id_news]").eq(0).text();
                     String name = element.eq(i).select("p[class=course_name]").eq(0).text();
                     String title = element.eq(i).select("h2[class=title]").eq(0).text();
                     String message = element.eq(i).select("p[class=message]").eq(0).text();
@@ -87,7 +91,7 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
                     }catch (Exception e){
                         linkImage = "";
                     }
-                    newsBD.insert(name, title,message,linkImage,time);
+                    newsBD.insert(id_news, name, title,message,linkImage,time);
                 }
             } catch (Exception e) {
                 //
@@ -98,7 +102,7 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
         public void onPostExecute(Integer s){
             super.onPostExecute(s);
             listNews = newsBD.selectAll();
-            adapter = new MyCourseNewsAdapter(getContext(), drawThreadNews());
+            adapter = new MyCourseNewsAdapter(getContext(), R.layout.fragment_posts, listNews);
             lv.setAdapter(adapter);
             Toast.makeText(getContext(), R.string.is_ready, Toast.LENGTH_SHORT).show();
         }
@@ -120,6 +124,30 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.reload_btn:
                 reloadPressed();
+                break;
+            case R.id.add_news_btn:
+                if(new CoursesOfUserDB(getContext()).selectAll().size() != 0) {
+                    Intent intent = new Intent(getContext(), AddCourseNews.class);
+                    startActivityForResult(intent, 43);
+                }else{
+                    Toast.makeText(getContext(),"У вас нет доступных курсов.", Toast.LENGTH_LONG).show();
+                }
+                break;
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        listNews = newsBD.selectAll();
+        adapter = new MyCourseNewsAdapter(getContext(),R.layout.fragment_posts, listNews);
+        lv.setAdapter(adapter);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        newsBD = new CoursesNewsOfUserDB(getContext());
+        listNews = newsBD.selectAll();
+        adapter = new MyCourseNewsAdapter(getContext(),R.layout.fragment_posts, listNews);
+        lv.setAdapter(adapter);
     }
 }

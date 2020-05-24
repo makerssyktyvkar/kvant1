@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import java.util.Objects;
 
+import space.firsov.kvantnews.CoursesOfUserDB;
 import space.firsov.kvantnews.LoginActivity;
 import space.firsov.kvantnews.StudentNavActivity;
 import space.firsov.kvantnews.User;
@@ -42,6 +43,8 @@ public class ExitDialogFragment extends AppCompatDialogFragment {
                 childrenDB.deleteAll();
                 AchievementsDB achievementsDB = new AchievementsDB(getContext());
                 achievementsDB.deleteAll();
+                CoursesOfUserDB coursesOfUserDB = new CoursesOfUserDB(getContext());
+                coursesNewsOfUserDB.deleteAll();
                 User user = new User(getContext());
                 user.deleteAll();
                 startLoginActivity();
@@ -60,7 +63,6 @@ public class ExitDialogFragment extends AppCompatDialogFragment {
     }
     private void startLoginActivity(){
         Intent intent = new Intent(getContext(), LoginActivity.class);
-        //intent.putExtra("type",1);
         startActivity(intent);
     }
     private void startMain(){
