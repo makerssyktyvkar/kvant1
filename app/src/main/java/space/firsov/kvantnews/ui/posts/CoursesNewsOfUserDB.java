@@ -70,6 +70,16 @@ public class CoursesNewsOfUserDB {
         cv.put(COLUMN_ADD_INFO, addInfo);
         return mDataBase.update(TABLE_NAME, cv, COLUMN_ID + " = ?",new String[] { id_news});
     }
+    public int update(courseNews news) {
+        ContentValues cv=new ContentValues();
+        maxId++;
+        cv.put(COLUMN_NAME_COURSE, news.courseName);
+        cv.put(COLUMN_TITLE, news.title);
+        cv.put(COLUMN_MESSAGE, news.message);
+        cv.put(COLUMN_IMAGE, news.imageString);
+        cv.put(COLUMN_ADD_INFO, news.additionalInfo);
+        return mDataBase.update(TABLE_NAME, cv, COLUMN_ID + " = ?",new String[] { news.id_news});
+    }
 
     public void deleteAll() {
         mDataBase.delete(TABLE_NAME, null, null);
@@ -82,11 +92,11 @@ public class CoursesNewsOfUserDB {
 
 
     public ArrayList<courseNews> selectAll() {
-        Cursor mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, null);
+        Cursor mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, "id");
 
         ArrayList<courseNews> arr = new ArrayList<>();
-        mCursor.moveToFirst();
-        if (!mCursor.isAfterLast()) {
+        mCursor.moveToLast();
+        if (!mCursor.isBeforeFirst()) {
             do {
                 String id = mCursor.getString(NUM_COLUMN_ID);
                 String courseName = mCursor.getString(NUM_COLUMN_NAME_COURSE);
@@ -95,9 +105,20 @@ public class CoursesNewsOfUserDB {
                 String image = mCursor.getString(NUM_COLUMN_IMAGE);
                 String addInfo = mCursor.getString(NUM_COLUMN_ADD_INFO);
                 arr.add(new courseNews(id, courseName,title,message,image,addInfo));
-            } while (mCursor.moveToNext());
+            } while (mCursor.moveToPrevious());
         }
         return arr;
+    }
+    public courseNews select(String id){
+        Cursor mCursor = mDataBase.query(TABLE_NAME, null, "id = ?", new String[] {id},
+                null, null, null);
+        mCursor.moveToFirst();
+        String courseName = mCursor.getString(NUM_COLUMN_NAME_COURSE);
+        String title = mCursor.getString(NUM_COLUMN_TITLE);
+        String message = mCursor.getString(NUM_COLUMN_MESSAGE);
+        String image = mCursor.getString(NUM_COLUMN_IMAGE);
+        String addInfo = mCursor.getString(NUM_COLUMN_ADD_INFO);
+        return new courseNews(id, courseName,title,message,image,addInfo);
     }
 
     private class OpenHelper extends SQLiteOpenHelper {

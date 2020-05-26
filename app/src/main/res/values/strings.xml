@@ -4,4 +4,8 @@
     <string name="submit">Отправить</string>
     <string name="is_ready">Готово</string>
     <string name="you_havent_children">У вас пока нет детей, зарегистрированных в системе.</string>
+    <string name="ChangeNewsError">Ошибка изменения новости</string>
+    <string name="NewsChangedSuccessfully">Новость успешно изменена</string>
+    <string name="NewsAddedSuccessfully">Новость успешно добавлена</string>
+    <string name="AddingNewsError">Ошибка добавления новости</string>
 </resources>

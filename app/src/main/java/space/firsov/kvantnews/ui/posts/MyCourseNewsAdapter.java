@@ -62,6 +62,14 @@ public class MyCourseNewsAdapter extends ArrayAdapter<courseNews> {
                     ((Activity) context).startActivityForResult(intent, 42);
                 }
             });
+            ((ImageButton) convertView.findViewById(R.id.change_course_news_btn)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), ChangeCourseNews.class);
+                    intent.putExtra("id_news", (String)String.valueOf(news.id_news));
+                    ((Activity) context).startActivityForResult(intent, 42);
+                }
+            });
         }else{
             ((ImageButton) convertView.findViewById(R.id.delete_course_news_btn)).setVisibility(View.GONE);
             ((ImageButton) convertView.findViewById(R.id.change_course_news_btn)).setVisibility(View.GONE);

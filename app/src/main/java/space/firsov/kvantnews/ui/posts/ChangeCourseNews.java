@@ -1,5 +1,6 @@
 package space.firsov.kvantnews.ui.posts;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -41,7 +42,7 @@ import space.firsov.kvantnews.CoursesOfUserDB;
 import space.firsov.kvantnews.R;
 import space.firsov.kvantnews.User;
 
-public class AddCourseNews extends AppCompatActivity implements View.OnClickListener {
+public class ChangeCourseNews extends AppCompatActivity implements View.OnClickListener {
     private Button course_name_btn;
     private ImageButton add_delete_image_btn;
     private EditText title_et;
@@ -50,47 +51,63 @@ public class AddCourseNews extends AppCompatActivity implements View.OnClickList
     private ImageView news_image_iv;
     private int selectedCourseID;
     private Bitmap news_image;
-    private ArrayList<Pair<Integer,String>> courses;
+    private ArrayList<Pair<Integer, String>> courses;
     private TextView info_tv;
     private Uri selectedUri;
+    private String id_news;
+    private courseNews changeNews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_course_news);
-        course_name_btn = (Button)findViewById(R.id.course_name);
-        title_et = (EditText)findViewById(R.id.news_title);
-        message_et = (EditText)findViewById(R.id.news_message);
-        news_image_iv = (ImageView)findViewById(R.id.news_image);
-        info_tv = (TextView)findViewById(R.id.info_tv);
+        id_news = getIntent().getStringExtra("id_news");
+        changeNews = new CoursesNewsOfUserDB(this).select(id_news);
+        course_name_btn = (Button) findViewById(R.id.course_name);
+        title_et = (EditText) findViewById(R.id.news_title);
+        message_et = (EditText) findViewById(R.id.news_message);
+        news_image_iv = (ImageView) findViewById(R.id.news_image);
+        info_tv = (TextView) findViewById(R.id.info_tv);
         add_delete_image_btn = (ImageButton) findViewById(R.id.add_image_button);
         Button submit_btn = (Button) findViewById(R.id.submit_news_btn);
         courses = new CoursesOfUserDB(getApplicationContext()).selectAll();
-        if(courses.size() == 0){
+        if (courses.size() == 0) {
             this.onBackPressed();
-        }else{
-            selectedCourse = courses.get(0).second;
-            selectedCourseID = courses.get(0).first;
+        } else {
+            selectedCourse = changeNews.courseName;
+            for(Pair<Integer, String> p : courses){
+                if(p.second.equals(selectedCourse)){
+                    selectedCourseID = p.first;
+                }
+            }
             course_name_btn.setText(selectedCourse);
         }
-        news_image_iv.setVisibility(View.GONE);
+        if(changeNews.image == null) {
+            news_image_iv.setVisibility(View.GONE);
+        }else{
+            news_image_iv.setImageBitmap(changeNews.image);
+            add_delete_image_btn.setImageResource(R.drawable.delete_image);
+        }
+        title_et.setText(changeNews.title);
+        message_et.setText(changeNews.message);
+        submit_btn.setText("Изменить");
         course_name_btn.setOnClickListener(this);
         add_delete_image_btn.setOnClickListener(this);
         submit_btn.setOnClickListener(this);
-        submit_btn.setText("Добавить");
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.course_name:
                 showPopupMenu(v);
                 break;
             case R.id.add_image_button:
-                if(selectedUri == null){
+                if (changeNews.image == null) {
                     performFileSearch();
-                }else{
-                    selectedUri = null;
+                } else {
+                    changeNews.image = null;
+                    changeNews.imageString = "";
                     add_delete_image_btn.setImageResource(R.drawable.add_image);
                     news_image_iv.setVisibility(View.GONE);
                 }
@@ -101,9 +118,9 @@ public class AddCourseNews extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void showPopupMenu(View v){
-        PopupMenu popupMenu = new PopupMenu(getApplicationContext(),v);
-        for(Pair<Integer,String> p : courses){
+    private void showPopupMenu(View v) {
+        PopupMenu popupMenu = new PopupMenu(getApplicationContext(), v);
+        for (Pair<Integer, String> p : courses) {
             popupMenu.getMenu().add(0, p.first, 0, p.second);
         }
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -111,6 +128,7 @@ public class AddCourseNews extends AppCompatActivity implements View.OnClickList
             public boolean onMenuItemClick(MenuItem item) {
                 selectedCourseID = item.getItemId();
                 selectedCourse = item.getTitle().toString();
+                changeNews.courseName = selectedCourse;
                 course_name_btn.setText(selectedCourse);
                 return false;
             }
@@ -119,6 +137,7 @@ public class AddCourseNews extends AppCompatActivity implements View.OnClickList
     }
 
     private static final int READ_REQUEST_CODE = 42;
+
     public void performFileSearch() {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -137,7 +156,7 @@ public class AddCourseNews extends AppCompatActivity implements View.OnClickList
                 selectedUri = uri;
                 showImage(uri);
             }
-            if(selectedUri != null) {
+            if (selectedUri != null) {
                 add_delete_image_btn.setImageResource(R.drawable.delete_image);
                 news_image_iv.setVisibility(View.VISIBLE);
             }
@@ -153,37 +172,38 @@ public class AddCourseNews extends AppCompatActivity implements View.OnClickList
         return image;
     }
 
-    private void showImage(Uri uri){
+    private void showImage(Uri uri) {
         try {
             news_image = getBitmapFromUri(uri);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(news_image != null){
+        if (news_image != null) {
             news_image_iv.setImageBitmap(news_image);
+            changeNews.image = news_image;
+            changeNews.imageString = getBase64FromBitmap(news_image);
         }
     }
 
-    private void addNewsToDB(){
-        if(isOnline()) {
-            courseNews newCourseNews = new courseNews(String.valueOf(selectedCourseID),
-                    selectedCourse, title_et.getText().toString(),
-                    message_et.getText().toString(), getBase64FromBitmap(news_image), getTime());
-            new InsertCourseNews(newCourseNews).execute();
-        }else{
-            Toast.makeText(getApplicationContext(),R.string.no_internet_connection,Toast.LENGTH_LONG).show();
+    private void addNewsToDB() {
+        if (isOnline()) {
+            changeNews.title = title_et.getText().toString();
+            changeNews.message = message_et.getText().toString();
+            new InsertCourseNews().execute();
+        } else {
+            Toast.makeText(getApplicationContext(), R.string.no_internet_connection, Toast.LENGTH_LONG).show();
         }
     }
 
-    private String getBase64FromBitmap(Bitmap bitmap){
+    private String getBase64FromBitmap(Bitmap bitmap) {
         if (bitmap == null) return "";
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream .toByteArray();
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(byteArray, Base64.DEFAULT);
     }
 
-    private String getTime(){
+    private String getTime() {
         Date currentDate = new Date();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         String dateText = dateFormat.format(currentDate);
@@ -196,29 +216,26 @@ public class AddCourseNews extends AppCompatActivity implements View.OnClickList
         Runtime runtime = Runtime.getRuntime();
         try {
             Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
-            int     exitValue = ipProcess.waitFor();
+            int exitValue = ipProcess.waitFor();
             return (exitValue == 0);
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
         }
-        catch (IOException | InterruptedException e)          { e.printStackTrace(); }
         return false;
     }
 
     public class InsertCourseNews extends AsyncTask<String, Void, String> {
-        courseNews news;
-        InsertCourseNews(courseNews news){
-            this.news = news;
-        }
 
         @Override
         protected String doInBackground(String... strings) {
             String res = "ok";
-            try{
-                String url = "https://kvantfp.000webhostapp.com/AddCoursesNews.php";
+            try {
+                String url = "https://kvantfp.000webhostapp.com/ChangeCoursesNews.php";
                 Document document;
-                if(selectedUri != null) {
+                if (changeNews.image != null) {
                     File f = new File(getApplicationContext().getCacheDir(), "image");
                     f.createNewFile();
-                    Bitmap bitmap = news_image;
+                    Bitmap bitmap = changeNews.image;
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
                     byte[] bitmapData = bos.toByteArray();
@@ -228,38 +245,39 @@ public class AddCourseNews extends AppCompatActivity implements View.OnClickList
                     fos.close();
                     FileInputStream fileInputStream = new FileInputStream(f);
                     document = Jsoup.connect(url).
+                            data("id_news", id_news).
                             data("id_course", String.valueOf(selectedCourseID)).
-                            data("title", news.title).
-                            data("message", news.message).
-                            data("time", news.additionalInfo).
+                            data("title", changeNews.title).
+                            data("message", changeNews.message).
+                            data("time", changeNews.additionalInfo).
                             data("image", "image", fileInputStream).post();
-                }else{
+                } else {
                     document = Jsoup.connect(url).
+                            data("id_news", id_news).
                             data("id_course", String.valueOf(selectedCourseID)).
-                            data("title", news.title).
-                            data("message", news.message).
-                            data("time", news.additionalInfo).post();
+                            data("title", changeNews.title).
+                            data("message", changeNews.message).
+                            data("time", changeNews.additionalInfo).post();
                 }
-                news.id_news = document.select("p").eq(0).text();
-            }catch (Exception e){
+            } catch (Exception e) {
                 res = "fail";
             }
             return res;
         }
 
         @Override
-        public void onPostExecute(String s){
-            if(!s.equals("fail")) {
-                new CoursesNewsOfUserDB(getApplicationContext()).insert(news);
-                Toast.makeText(getApplicationContext(), R.string.NewsAddedSuccessfully, Toast.LENGTH_LONG).show();
-            }else{
-                Toast.makeText(getApplicationContext(), R.string.AddingNewsError, Toast.LENGTH_LONG).show();
+        public void onPostExecute(String s) {
+            if (!s.equals("fail")) {
+                new CoursesNewsOfUserDB(getApplicationContext()).update(changeNews);
+                Toast.makeText(getApplicationContext(), R.string.NewsChangedSuccessfully, Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(), R.string.ChangeNewsError, Toast.LENGTH_LONG).show();
             }
         }
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         Intent i = new Intent();
         setResult(RESULT_OK, i);
         finish();
