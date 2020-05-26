@@ -13,11 +13,13 @@
         android:orientation="vertical">
         <EditText
             android:id="@+id/user_question"
+            android:textSize="25sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/Your_question"/>
         <Button
             android:textAllCaps="false"
+            android:textSize="25sp"
             android:id="@+id/submit_question_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

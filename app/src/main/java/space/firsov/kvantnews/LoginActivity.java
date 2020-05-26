@@ -130,15 +130,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } catch (Exception e){
             //
         }
+        try {
+            new GetUserAchievements(login, this).execute().get();
+        } catch (Exception e){
+            //
+        }
     }
     private void findAllAboutStudent(String login){
         try {
             new GetCourses(login, this).execute().get();
-        } catch (Exception e){
-            //
-        }
-        try {
-            new GetUserAchievements(login, this).execute().get();
         } catch (Exception e){
             //
         }

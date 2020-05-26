@@ -2,6 +2,7 @@ package space.firsov.kvantnews.ui.support;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +44,7 @@ public class SupportFragment extends Fragment  implements View.OnClickListener {
         supportsDB = new SupportsDB(root.getContext());
         listSupports = supportsDB.selectAll();
         if(listSupports.size()!=0){
-            adapter = new SupportAdapter(getContext(), drawThreadNews());
+            adapter = new SupportAdapter(getContext(), R.layout.support_adapter, listSupports);
             lv.setAdapter(adapter);
         }else{
             reloadPressed();
@@ -51,28 +52,7 @@ public class SupportFragment extends Fragment  implements View.OnClickListener {
         ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
         reload_btn.setOnClickListener(this);
         submit_question_btn.setOnClickListener(this);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View itemClicked, int position,
-                                    long id) {
-                String id2 = ((TextView) itemClicked.findViewById(R.id.id)).getText().toString(); // получаем текст нажатого элемента
-                try {
-                    new DeleteSupportByID(Long.parseLong(id2), getContext()).execute().get();
-                } catch (Exception e){
-                    //
-                }
-                reloadPressed();
-            }
-        });
         return root;
-    }
-
-    private Support[] drawThreadNews (){
-        Support[] supports = new Support[listSupports.size()];
-        for(int i=0;i<listSupports.size();i++){
-            supports[i] = listSupports.get(i);
-        }
-        return supports;
     }
 
     private void reloadPressed() {
@@ -83,14 +63,14 @@ public class SupportFragment extends Fragment  implements View.OnClickListener {
                 //
             }
             listSupports = supportsDB.selectAll();
-            adapter = new SupportAdapter(getContext(), drawThreadNews());
+            adapter = new SupportAdapter(getContext(), R.layout.support_adapter, listSupports);
             lv.setAdapter(adapter);
         }else{
             Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_LONG).show();
         }
     }
 
-    public boolean isOnline() {
+    boolean isOnline() {
         Runtime runtime = Runtime.getRuntime();
         try {
             Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
@@ -119,5 +99,19 @@ public class SupportFragment extends Fragment  implements View.OnClickListener {
                 user_question.setText("");
                 break;
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        listSupports = supportsDB.selectAll();
+        adapter = new SupportAdapter(getContext(), R.layout.support_adapter, listSupports);
+        lv.setAdapter(adapter);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        listSupports = supportsDB.selectAll();
+        adapter = new SupportAdapter(getContext(), R.layout.support_adapter, listSupports);
+        lv.setAdapter(adapter);
     }
 }

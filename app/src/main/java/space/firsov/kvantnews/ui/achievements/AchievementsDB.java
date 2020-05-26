@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class AchievementsDB {
 
@@ -16,9 +17,11 @@ public class AchievementsDB {
 
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_ACHIEVEMENT = "achievement";
+    private static final String COLUMN_LOGIN = "login";
 
     private static final int NUM_COLUMN_ID = 0;
     private static final int NUM_COLUMN_ACHIEVEMENT = 1;
+    private static final int NUM_COLUMN_LOGIN = 2;
     private static int maxId = 0;
 
     private SQLiteDatabase mDataBase;
@@ -28,20 +31,48 @@ public class AchievementsDB {
         mDataBase = mOpenHelper.getWritableDatabase();
     }
 
-    public long insert(String achievement) {
+    public long insert(String achievement,String login) {
         ContentValues cv=new ContentValues();
         cv.put(COLUMN_ACHIEVEMENT, achievement);
+        cv.put(COLUMN_LOGIN, login);
         return mDataBase.insert(TABLE_NAME, null, cv);
     }
 
     public void deleteAll() {
-        mDataBase.delete(TABLE_NAME, null, null);
+        try {
+            mDataBase.delete(TABLE_NAME, null, null);
+        }catch (Exception e){
+            restartAll();
+        }
+
     }
 
-
+    private void restartAll(){
+        mDataBase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        String query = "CREATE TABLE " + TABLE_NAME + " (" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_ACHIEVEMENT+ " TEXT, " +
+                COLUMN_LOGIN + " TEXT);";
+        mDataBase.execSQL(query);
+    }
 
     public ArrayList<Achievement> selectAll() {
         Cursor mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, null);
+        ArrayList<Achievement> arr = new ArrayList<>();
+        mCursor.moveToFirst();
+        if (!mCursor.isAfterLast()) {
+            do {
+                long id = mCursor.getLong(NUM_COLUMN_ID);
+                String achievement = mCursor.getString(NUM_COLUMN_ACHIEVEMENT);
+                String login = mCursor.getString(NUM_COLUMN_LOGIN);
+                arr.add(new Achievement(achievement, login));
+            } while (mCursor.moveToNext());
+        }
+        return arr;
+    }
+
+    public ArrayList<Achievement> selectAll(String login) {
+        Cursor mCursor = mDataBase.query(TABLE_NAME, null, "login = ?", new String[] {login}, null, null, null);
 
         ArrayList<Achievement> arr = new ArrayList<>();
         mCursor.moveToFirst();
@@ -49,10 +80,22 @@ public class AchievementsDB {
             do {
                 long id = mCursor.getLong(NUM_COLUMN_ID);
                 String achievement = mCursor.getString(NUM_COLUMN_ACHIEVEMENT);
-                arr.add(new Achievement(achievement));
+                arr.add(new Achievement(achievement, login));
             } while (mCursor.moveToNext());
         }
         return arr;
+    }
+
+    public ArrayList<String> selectUniqueChildren(){
+        Cursor cursor = mDataBase.query(TABLE_NAME, new String[]{"login"}, null, null, null, null, "login");
+        HashSet<String> tmp = new HashSet<>();
+        cursor.moveToFirst();
+        if(!cursor.isAfterLast()){
+            do{
+                tmp.add(cursor.getString(0));
+            }while(cursor.moveToNext());
+        }
+        return new ArrayList<String>(tmp);
     }
 
     private class OpenHelper extends SQLiteOpenHelper {
@@ -64,7 +107,8 @@ public class AchievementsDB {
         public void onCreate(SQLiteDatabase db) {
             String query = "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COLUMN_ACHIEVEMENT+ " TEXT);";
+                    COLUMN_ACHIEVEMENT+ " TEXT, " +
+                    COLUMN_LOGIN + " TEXT);";
             db.execSQL(query);
         }
 

@@ -19,13 +19,14 @@ public class GetUserAchievements extends AsyncTask<String, Void, Integer> {
     @Override
     protected Integer doInBackground(String... args) {
         try {
-            String url = "https://kvantfp.000webhostapp.com/ReturnAchievementsForStudent.php?login=" + login;
+            String url = "https://kvantfp.000webhostapp.com/ReturnAchievements.php?login=" + login;
             Document document = Jsoup.connect(url).get();
-            Elements element = document.select("p[class=achievement]");
+            Elements el = document.select("li");
             achievementDB.deleteAll();
-            for (int i = 0; i < element.size(); i++) {
-                String achievement = element.eq(i).text();
-                achievementDB.insert(achievement);
+            for (int i = 0; i < el.size(); i++) {
+                String achievement = el.eq(i).select("p[class=achievement]").eq(0).text();
+                String login = el.eq(i).select("p[class=login]").eq(0).text();
+                achievementDB.insert(achievement, login);
             }
         } catch (Exception e) {
             //

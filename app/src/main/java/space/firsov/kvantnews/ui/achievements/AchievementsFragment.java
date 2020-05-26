@@ -2,10 +2,13 @@ package space.firsov.kvantnews.ui.achievements;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 
 import space.firsov.kvantnews.R;
 import space.firsov.kvantnews.User;
+import space.firsov.kvantnews.ui.timetable.ChildrenDB;
 
 public class AchievementsFragment extends Fragment  implements View.OnClickListener {
     private ArrayList<Achievement> listAchievements = new ArrayList<>();
@@ -23,21 +27,40 @@ public class AchievementsFragment extends Fragment  implements View.OnClickListe
     private AchievementAdapter adapter;
     private ListView lv;
     private String login;
+    private Button change_childName_btn;
+    private String mainChild;
+    private int type;
+    private ArrayList<String> children;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_achievements, container, false);
         login = new User(getActivity()).getLogin();
+        type = new User(getActivity()).getType();
         lv =  (ListView) root.findViewById(R.id.list_container);
+        ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
+        change_childName_btn = (Button)root.findViewById(R.id.main_child_name);
         achievementsDB = new AchievementsDB(root.getContext());
-        listAchievements = achievementsDB.selectAll();
+        if(type == 2){
+            mainChild = login;
+            change_childName_btn.getLayoutParams().height = 0;
+        }else if(type == 3 || type == 4){
+            children = achievementsDB.selectUniqueChildren();
+            if(children.size()==0){
+                change_childName_btn.setText("Нет достижений");
+            }else{
+                mainChild = children.get(0);
+                change_childName_btn.setText(mainChild);
+            }
+            change_childName_btn.setOnClickListener(this);
+        }
+        listAchievements = achievementsDB.selectAll(mainChild);
         if(listAchievements.size()!=0){
             adapter = new AchievementAdapter(getContext(), drawThreadNews());
             lv.setAdapter(adapter);
         }else{
             reloadPressed();
         }
-        ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
         reload_btn.setOnClickListener(this);
         return root;
     }
@@ -57,7 +80,7 @@ public class AchievementsFragment extends Fragment  implements View.OnClickListe
             }catch (Exception e) {
                 //
             }
-            listAchievements = achievementsDB.selectAll();
+            listAchievements = achievementsDB.selectAll(mainChild);
             adapter = new AchievementAdapter(getContext(), drawThreadNews());
             lv.setAdapter(adapter);
         }else{
@@ -65,7 +88,7 @@ public class AchievementsFragment extends Fragment  implements View.OnClickListe
         }
     }
 
-    public boolean isOnline() {
+    boolean isOnline() {
         Runtime runtime = Runtime.getRuntime();
         try {
             Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
@@ -82,6 +105,27 @@ public class AchievementsFragment extends Fragment  implements View.OnClickListe
             case R.id.reload_btn:
                 reloadPressed();
                 break;
+            case R.id.main_child_name:
+                PopupMenu popupMenu = new PopupMenu(getContext(),v);
+                for(int i=0;i<children.size();i++) {
+                    popupMenu.getMenu().add(0,i,0,children.get(i));
+                }
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        mainChild = children.get(item.getItemId());
+                        change_childName_btn.setText(mainChild);
+                        listAchievements = achievementsDB.selectAll(mainChild);
+                        if(listAchievements.size() == 0){
+                            reloadPressed();
+                            return false;
+                        }
+                        adapter = new AchievementAdapter(getContext(), drawThreadNews());
+                        lv.setAdapter(adapter);
+                        return false;
+                    }
+                });
+                popupMenu.show();
         }
     }
 }
