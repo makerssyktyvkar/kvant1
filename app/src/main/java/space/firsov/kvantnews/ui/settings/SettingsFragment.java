@@ -1,23 +1,64 @@
 package space.firsov.kvantnews.ui.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import space.firsov.kvantnews.InfoActivity;
+import space.firsov.kvantnews.IsNotification;
+import space.firsov.kvantnews.QAndAActivity;
 import space.firsov.kvantnews.R;
 
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends Fragment implements View.OnClickListener {
+    private CheckBox is_notifications_btn;
+    private Button questions_and_answers_btn;
+    private Button info_btn;
+    private boolean notificated;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
-        final TextView textView = root.findViewById(R.id.text_settings);
-        textView.setText(R.string.settings);
+        questions_and_answers_btn = root.findViewById(R.id.button_q_and_a);
+        info_btn = root.findViewById(R.id.button_info);
+        is_notifications_btn = root.findViewById(R.id.checkbox_notification);
+        if(new IsNotification(getContext()).select() == 0){
+            notificated = false;
+        }else{
+            notificated = true;
+            is_notifications_btn.setChecked(true);
+        }
+        is_notifications_btn.setOnClickListener(this);
         return root;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button_q_and_a:
+                startQAndA();
+                break;
+            case R.id.button_info:
+                startInfoActivity();
+            case R.id.checkbox_notification:
+                notificated = !notificated;
+                new IsNotification(getContext()).change(notificated ? 1:0);
+        }
+    }
+
+    private void startQAndA(){
+        Intent intent = new Intent(getActivity(), QAndAActivity.class);
+        startActivity(intent);
+    }
+    private void startInfoActivity(){
+        Intent intent = new Intent(getActivity(), InfoActivity.class);
+        startActivity(intent);
     }
 }

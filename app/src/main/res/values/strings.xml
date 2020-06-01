@@ -8,4 +8,12 @@
     <string name="NewsChangedSuccessfully">Новость успешно изменена</string>
     <string name="NewsAddedSuccessfully">Новость успешно добавлена</string>
     <string name="AddingNewsError">Ошибка добавления новости</string>
+    <string name="notification">Отправлять уведомления о новостях и изменении в расписании</string>
+    <string name="q_and_a"><![CDATA[Q&A и некоторые советы]]></string>
+    <string name="info">Info</string>
+    <string name="questions">Часто задаваемые вопросы</string>
+    <string name="v_1_0">KvantNews v.1.0.0</string>
+    <string name="_2020">Разработано в 2020 году</string>
+    <string name="developers">Проект двух начинающих программистов из Сыктывкара</string>
+    <string name="special_for">Специально для Кванториума</string>
 </resources>

@@ -23,7 +23,7 @@ public class ExitFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_achievements, container, false);
+        View root = inflater.inflate(R.layout.fragment_exit, container, false);
         FragmentManager manager = getActivity().getSupportFragmentManager();
         ExitDialogFragment exitDialogFragment = new ExitDialogFragment();
         exitDialogFragment.show(manager, "myDialog");
