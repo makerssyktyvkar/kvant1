@@ -29,9 +29,8 @@ public class QuestionsAndAnswersAdapter extends ArrayAdapter<Pair<String, String
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.question_adapter, null);
         }
         assert question != null;
-        ((TextView) convertView.findViewById(R.id.answer)).setText(question.first);
-        ((TextView) convertView.findViewById(R.id.question)).setText(question.second);
-
+        ((TextView) convertView.findViewById(R.id.answer)).setText(question.second);
+        ((TextView) convertView.findViewById(R.id.question)).setText(question.first);
         return convertView;
     }
 }

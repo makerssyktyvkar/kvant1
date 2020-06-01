@@ -35,10 +35,5 @@
         android:layout_height="70sp"
         android:text="@string/info"
         android:textSize="28sp"
-        android:textAllCaps="false"
-        >
-
-    </Button>
-
-
+        android:textAllCaps="false"/>
 </LinearLayout>
