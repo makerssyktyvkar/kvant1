@@ -57,7 +57,13 @@ public class AchievementsDB {
     }
 
     public ArrayList<Achievement> selectAll() {
-        Cursor mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, null);
+        Cursor mCursor;
+        try {
+            mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, null);
+        }catch (Exception e){
+            restartAll();
+            mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, null);
+        }
         ArrayList<Achievement> arr = new ArrayList<>();
         mCursor.moveToFirst();
         if (!mCursor.isAfterLast()) {
@@ -71,9 +77,15 @@ public class AchievementsDB {
         return arr;
     }
 
-    public ArrayList<Achievement> selectAll(String login) {
-        Cursor mCursor = mDataBase.query(TABLE_NAME, null, "login = ?", new String[] {login}, null, null, null);
 
+    public ArrayList<Achievement> selectAll(String login) {
+        Cursor mCursor;
+        try {
+            mCursor = mDataBase.query(TABLE_NAME, null, "login = ?",  new String[] {login}, null, null, null);
+        }catch (Exception e){
+            restartAll();
+            mCursor = mDataBase.query(TABLE_NAME, null, "login = ?",  new String[] {login}, null, null, null);
+        }
         ArrayList<Achievement> arr = new ArrayList<>();
         mCursor.moveToFirst();
         if (!mCursor.isAfterLast()) {

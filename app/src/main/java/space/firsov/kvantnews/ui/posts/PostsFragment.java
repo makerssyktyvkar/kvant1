@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import space.firsov.kvantnews.CoursesOfUserDB;
+import space.firsov.kvantnews.GetCourses;
 import space.firsov.kvantnews.R;
 import space.firsov.kvantnews.User;
 
@@ -126,11 +127,16 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
                 reloadPressed();
                 break;
             case R.id.add_news_btn:
+                try {
+                    new GetCourses(login, getContext()).execute().get();
+                }catch (Exception e){
+                    //
+                }
                 if(new CoursesOfUserDB(getContext()).selectAll().size() != 0) {
                     Intent intent = new Intent(getContext(), AddCourseNews.class);
                     startActivityForResult(intent, 43);
                 }else{
-                    Toast.makeText(getContext(),"У вас нет доступных курсов.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "У вас нет доступных курсов.", Toast.LENGTH_LONG).show();
                 }
                 break;
         }

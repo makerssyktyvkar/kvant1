@@ -3,6 +3,7 @@ package space.firsov.kvantnews.ui.support;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,16 +62,38 @@ public class SupportFragment extends Fragment  implements View.OnClickListener {
 
     private void reloadPressed() {
         if(isOnline()) {
+            new GetUserSupports().execute();
+        }else{
+            Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public class GetUserSupports extends AsyncTask<String, Void, Integer> {
+        @Override
+        protected Integer doInBackground(String... args) {
             try {
-                new GetUserSupports(login, getContext()).execute().get();
-            }catch (Exception e){
+                String url = "https://kvantfp.000webhostapp.com/ReturnSupportsForUser.php?login=" + login;
+                Document document = Jsoup.connect(url).get();
+                Elements element = document.select("li[class=support-item]");
+                supportsDB.deleteAll();
+                for (int i = 0; i < element.size(); i++) {
+                    long id = Integer.parseInt(element.eq(i).select("p[class=id]").eq(0).text());
+                    String answer = element.eq(i).select("p[class=answer]").eq(0).text();
+                    String question = element.eq(i).select("p[class=question]").eq(0).text();
+                    supportsDB.insert(id, answer,question);
+                }
+            } catch (Exception e) {
                 //
             }
+            return 1;
+        }
+
+        @Override
+        protected void onPostExecute(Integer s){
+            super.onPostExecute(s);
             listSupports = supportsDB.selectAll();
             adapter = new SupportAdapter(getContext(), R.layout.support_adapter, listSupports);
             lv.setAdapter(adapter);
-        }else{
-            Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_LONG).show();
         }
     }
 

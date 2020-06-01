@@ -52,7 +52,6 @@ public class ChangeCourseNews extends AppCompatActivity implements View.OnClickL
     private int selectedCourseID;
     private Bitmap news_image;
     private ArrayList<Pair<Integer, String>> courses;
-    private TextView info_tv;
     private Uri selectedUri;
     private String id_news;
     private courseNews changeNews;
@@ -67,7 +66,6 @@ public class ChangeCourseNews extends AppCompatActivity implements View.OnClickL
         title_et = (EditText) findViewById(R.id.news_title);
         message_et = (EditText) findViewById(R.id.news_message);
         news_image_iv = (ImageView) findViewById(R.id.news_image);
-        info_tv = (TextView) findViewById(R.id.info_tv);
         add_delete_image_btn = (ImageButton) findViewById(R.id.add_image_button);
         Button submit_btn = (Button) findViewById(R.id.submit_news_btn);
         courses = new CoursesOfUserDB(getApplicationContext()).selectAll();
@@ -113,6 +111,7 @@ public class ChangeCourseNews extends AppCompatActivity implements View.OnClickL
                 }
                 break;
             case R.id.submit_news_btn:
+                Toast.makeText(this, R.string.please_wait,Toast.LENGTH_LONG).show();
                 addNewsToDB();
                 break;
         }

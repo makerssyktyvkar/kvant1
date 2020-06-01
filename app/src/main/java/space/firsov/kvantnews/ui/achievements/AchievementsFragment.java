@@ -1,5 +1,7 @@
 package space.firsov.kvantnews.ui.achievements;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -14,12 +16,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
 import space.firsov.kvantnews.R;
 import space.firsov.kvantnews.User;
 import space.firsov.kvantnews.ui.timetable.ChildrenDB;
+import space.firsov.kvantnews.ui.timetable.GetChildren;
 
 public class AchievementsFragment extends Fragment  implements View.OnClickListener {
     private ArrayList<Achievement> listAchievements = new ArrayList<>();
@@ -28,7 +35,7 @@ public class AchievementsFragment extends Fragment  implements View.OnClickListe
     private ListView lv;
     private String login;
     private Button change_childName_btn;
-    private String mainChild;
+    private String mainChild = "";
     private int type;
     private ArrayList<String> children;
 
@@ -48,6 +55,7 @@ public class AchievementsFragment extends Fragment  implements View.OnClickListe
             children = achievementsDB.selectUniqueChildren();
             if(children.size()==0){
                 change_childName_btn.setText("Нет достижений");
+                change_childName_btn.setEnabled(false);
             }else{
                 mainChild = children.get(0);
                 change_childName_btn.setText(mainChild);
@@ -58,9 +66,8 @@ public class AchievementsFragment extends Fragment  implements View.OnClickListe
         if(listAchievements.size()!=0){
             adapter = new AchievementAdapter(getContext(), drawThreadNews());
             lv.setAdapter(adapter);
-        }else{
-            reloadPressed();
         }
+        if(isOnline()) reloadPressed();
         reload_btn.setOnClickListener(this);
         return root;
     }
@@ -75,16 +82,56 @@ public class AchievementsFragment extends Fragment  implements View.OnClickListe
 
     private void reloadPressed() {
         if(isOnline()) {
-            try {
-                new GetUserAchievements(login, getContext()).execute().get();
-            }catch (Exception e) {
-                //
-            }
-            listAchievements = achievementsDB.selectAll(mainChild);
-            adapter = new AchievementAdapter(getContext(), drawThreadNews());
-            lv.setAdapter(adapter);
+            new GetUserAchievements().execute();
         }else{
             Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public class GetUserAchievements extends AsyncTask<String, Void, Integer> {
+        @Override
+        protected Integer doInBackground(String... args) {
+            try {
+                String url = "https://kvantfp.000webhostapp.com/ReturnAchievements.php?login=" + login;
+                Document document = Jsoup.connect(url).get();
+                Elements el = document.select("li");
+                achievementsDB.deleteAll();
+                for (int i = 0; i < el.size(); i++) {
+                    String achievement = el.eq(i).select("p[class=achievement]").eq(0).text();
+                    String login = el.eq(i).select("p[class=login]").eq(0).text();
+                    achievementsDB.insert(achievement, login);
+                }
+            } catch (Exception e) {
+                //
+            }
+            return 1;
+        }
+        @Override
+        protected void onPostExecute(Integer s){
+            super.onPostExecute(s);
+            listAchievements = achievementsDB.selectAll(mainChild);
+            if(type == 3 || type == 4){
+                try{
+                    new GetChildren(login, getContext()).execute().get();
+                }catch (Exception e) {
+                    //
+                }
+                children = achievementsDB.selectUniqueChildren();
+                if(children.size()==0){
+                    change_childName_btn.setText("Нет достижений");
+                    change_childName_btn.setEnabled(false);
+                }else{
+                    mainChild = children.get(0);
+                    change_childName_btn.setEnabled(true);
+                    change_childName_btn.setText(mainChild);
+                }
+            }
+
+            listAchievements = achievementsDB.selectAll(mainChild);
+            if(listAchievements.size()!=0){
+                adapter = new AchievementAdapter(getContext(), drawThreadNews());
+                lv.setAdapter(adapter);
+            }
         }
     }
 

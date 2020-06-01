@@ -30,7 +30,7 @@ public class StudentNavActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_news, R.id.nav_timetable, R.id.nav_posts,
-                R.id.nav_achievements, R.id.nav_support, R.id.nav_settings, R.id.nav_exit)
+                R.id.nav_achievements, R.id.nav_support, /*R.id.nav_settings,*/ R.id.nav_exit)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

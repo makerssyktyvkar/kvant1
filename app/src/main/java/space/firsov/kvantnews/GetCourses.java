@@ -8,11 +8,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-class GetCourses extends AsyncTask<String, Void, String> {
+public class GetCourses extends AsyncTask<String, Void, String> {
     private String login;
     private CoursesOfUserDB coursesOfUserDB;
 
-    GetCourses(String login, Context context) {
+    public GetCourses(String login, Context context) {
         this.login = login;
         coursesOfUserDB = new CoursesOfUserDB(context);
     }
