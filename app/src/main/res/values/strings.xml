@@ -8,7 +8,7 @@
     <string name="NewsChangedSuccessfully">Новость успешно изменена</string>
     <string name="NewsAddedSuccessfully">Новость успешно добавлена</string>
     <string name="AddingNewsError">Ошибка добавления новости</string>
-    <string name="notification">Отправлять уведомления о новостях и изменении в расписании</string>
+    <string name="notification">Отправлять уведомления / отправлять уведомления</string>
     <string name="q_and_a"><![CDATA[Q&A и некоторые советы]]></string>
     <string name="info">Info</string>
     <string name="questions">Часто задаваемые вопросы</string>
