@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.onesignal.OneSignal;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -94,14 +96,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     else {
                         user.insert(login,tp);
                         findAll(login);
+                        OneSignal.sendTag("sub","true");
                         switch(tp){
                             case 2:
+                                OneSignal.sendTag("type", "student");
                                 findAllAboutStudent(login);
                                 break;
                             case 3:
+                                OneSignal.sendTag("type", "parent");
                                 findAllAboutParent(login);
                                 break;
                             case 4:
+                                OneSignal.sendTag("type", "teacher");
                                 findAllAboutTeacher(login);
                                 break;
                         }

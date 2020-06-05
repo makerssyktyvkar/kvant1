@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.onesignal.OneSignal;
+
 import java.util.Objects;
 
 import space.firsov.kvantnews.CoursesOfUserDB;
@@ -47,6 +49,7 @@ public class ExitDialogFragment extends AppCompatDialogFragment {
                 coursesNewsOfUserDB.deleteAll();
                 User user = new User(getContext());
                 user.deleteAll();
+                OneSignal.sendTag("sub","false");
                 startLoginActivity();
                 dialog.cancel();
             }

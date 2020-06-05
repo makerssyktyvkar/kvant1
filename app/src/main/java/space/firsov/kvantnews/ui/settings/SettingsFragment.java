@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 
 import com.onesignal.OneSignal;
 
+import java.io.IOException;
+
 import space.firsov.kvantnews.InfoActivity;
 import space.firsov.kvantnews.IsNotification;
 import space.firsov.kvantnews.QAndAActivity;
@@ -53,14 +55,19 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 startInfoActivity();
                 break;
             case R.id.checkbox_notification:
-                notificated = !notificated;
-                if(!notificated){
-                    OneSignal.setSubscription(false);
+                if(isOnline()) {
+                    notificated = !notificated;
+                    if (!notificated) {
+                        OneSignal.sendTag("sub","false");
+                    } else {
+                        OneSignal.sendTag("sub","true");
+                    }
+                    new IsNotification(getContext()).change(notificated ? 1 : 0);
+                    Toast.makeText(getContext(), "Настройки уведомлений успешно изменены", Toast.LENGTH_SHORT).show();
                 }else{
-                    OneSignal.setSubscription(true);
+                    is_notifications_btn.setChecked(notificated);
+                    Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
                 }
-                new IsNotification(getContext()).change(notificated ? 1:0);
-                Toast.makeText(getContext(),"Настройки уведомлений успешно изменены", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -70,8 +77,20 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         startActivity(intent);
 
     }
+
     private void startInfoActivity(){
         Intent intent = new Intent(getActivity(), InfoActivity.class);
         startActivity(intent);
+    }
+
+    public boolean isOnline() {
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+            int     exitValue = ipProcess.waitFor();
+            return (exitValue == 0);
+        }
+        catch (IOException | InterruptedException e)          { e.printStackTrace(); }
+        return false;
     }
 }
