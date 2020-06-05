@@ -1,21 +1,18 @@
 package space.firsov.kvantnews.ui.posts;
 
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -49,9 +46,8 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
         if(listNews.size()!=0){
             adapter = new MyCourseNewsAdapter(getContext(), R.layout.fragment_posts, listNews);
             lv.setAdapter(adapter);
-        }else{
-            reloadPressed();
         }
+        reloadPressed();
         ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
         ImageButton add_news_btn = (ImageButton)root.findViewById(R.id.add_news_btn);
         reload_btn.setOnClickListener(this);

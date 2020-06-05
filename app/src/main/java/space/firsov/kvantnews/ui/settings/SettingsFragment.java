@@ -16,10 +16,12 @@ import com.onesignal.OneSignal;
 
 import java.io.IOException;
 
+import space.firsov.kvantnews.AddToMainDBOSId;
 import space.firsov.kvantnews.InfoActivity;
 import space.firsov.kvantnews.IsNotification;
 import space.firsov.kvantnews.QAndAActivity;
 import space.firsov.kvantnews.R;
+import space.firsov.kvantnews.User;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
     private CheckBox is_notifications_btn;
@@ -59,8 +61,10 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                     notificated = !notificated;
                     if (!notificated) {
                         OneSignal.sendTag("sub","false");
+                        new AddToMainDBOSId(new User(getContext()).getLogin(), "").execute();
                     } else {
                         OneSignal.sendTag("sub","true");
+                        new AddToMainDBOSId(new User(getContext()).getLogin(), User.UniqueID).execute();
                     }
                     new IsNotification(getContext()).change(notificated ? 1 : 0);
                     Toast.makeText(getContext(), "Настройки уведомлений успешно изменены", Toast.LENGTH_SHORT).show();

@@ -95,6 +95,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if (tp == 0) tw1.setText(R.string.NoSuchUsers);
                     else {
                         user.insert(login,tp);
+                        OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
+                            @Override
+                            public void idsAvailable(String userId, String registrationId) {
+                                User.UniqueID = userId;
+
+                            }
+                        });
+                        new AddToMainDBOSId(login,User.UniqueID).execute();
                         findAll(login);
                         OneSignal.sendTag("sub","true");
                         switch(tp){
@@ -185,4 +193,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             //
         }
     }
+
 }

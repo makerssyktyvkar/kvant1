@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 public class User {
 
+    public static String UniqueID = "null";
+
     private static final String DATABASE_NAME = "user.db";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "user";

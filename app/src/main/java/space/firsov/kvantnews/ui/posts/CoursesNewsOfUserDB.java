@@ -8,8 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
-import space.firsov.kvantnews.ui.posts.courseNews;
-
 
 public class CoursesNewsOfUserDB {
 
@@ -95,8 +93,8 @@ public class CoursesNewsOfUserDB {
         Cursor mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, "id");
 
         ArrayList<courseNews> arr = new ArrayList<>();
-        mCursor.moveToLast();
-        if (!mCursor.isBeforeFirst()) {
+        mCursor.moveToFirst();
+        if (!mCursor.isAfterLast()) {
             do {
                 String id = mCursor.getString(NUM_COLUMN_ID);
                 String courseName = mCursor.getString(NUM_COLUMN_NAME_COURSE);
@@ -105,7 +103,7 @@ public class CoursesNewsOfUserDB {
                 String image = mCursor.getString(NUM_COLUMN_IMAGE);
                 String addInfo = mCursor.getString(NUM_COLUMN_ADD_INFO);
                 arr.add(new courseNews(id, courseName,title,message,image,addInfo));
-            } while (mCursor.moveToPrevious());
+            } while (mCursor.moveToNext());
         }
         return arr;
     }
