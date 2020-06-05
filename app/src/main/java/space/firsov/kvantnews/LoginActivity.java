@@ -25,7 +25,7 @@ import space.firsov.kvantnews.ui.timetable.GetChildren;
 import space.firsov.kvantnews.ui.timetable.GetUserTimetable;
 
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     Button registration_btn;
     Button login_btn;
     EditText login_et;

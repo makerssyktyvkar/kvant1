@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.onesignal.OneSignal;
+
 import space.firsov.kvantnews.InfoActivity;
 import space.firsov.kvantnews.IsNotification;
 import space.firsov.kvantnews.QAndAActivity;
@@ -52,6 +54,11 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.checkbox_notification:
                 notificated = !notificated;
+                if(!notificated){
+                    OneSignal.setSubscription(false);
+                }else{
+                    OneSignal.setSubscription(true);
+                }
                 new IsNotification(getContext()).change(notificated ? 1:0);
                 Toast.makeText(getContext(),"Настройки уведомлений успешно изменены", Toast.LENGTH_SHORT).show();
                 break;

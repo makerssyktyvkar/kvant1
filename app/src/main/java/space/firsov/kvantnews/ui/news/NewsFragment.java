@@ -36,13 +36,7 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
         View root = inflater.inflate(R.layout.fragment_news, container, false);
         lv =  (ListView) root.findViewById(R.id.list_container);
         newsBD = new NewsDB(root.getContext());
-        listNews = newsBD.selectAll();
-        if(listNews.size()!=0){
-            adapter = new MyNewsAdapter(getContext(), drawThreadNews());
-            lv.setAdapter(adapter);
-        }else{
-            reloadPressed();
-        }
+        reloadPressed();
         ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
         reload_btn.setOnClickListener(this);
 
@@ -88,9 +82,11 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            adapter = new MyNewsAdapter(getContext(), drawThreadNews());
-            lv.setAdapter(adapter);
-            is_thread = false;
+            if(listNews.size()!=0) {
+                adapter = new MyNewsAdapter(getContext(), drawThreadNews());
+                lv.setAdapter(adapter);
+                is_thread = false;
+            }
             Toast.makeText(getContext(), R.string.news_is_reloaded,Toast.LENGTH_LONG).show();
         }
     }
