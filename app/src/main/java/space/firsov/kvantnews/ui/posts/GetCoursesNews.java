@@ -7,19 +7,23 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import space.firsov.kvantnews.R;
+
 public class GetCoursesNews extends AsyncTask<String, Void, Integer> {
     private String login;
     private CoursesNewsOfUserDB coursesNewsOfUserDB;
+    Context context;
 
     public GetCoursesNews(String login, Context context) {
         this.login = login;
         coursesNewsOfUserDB = new CoursesNewsOfUserDB(context);
+        this.context = context;
     }
 
     @Override
     protected Integer doInBackground(String... args) {
         try {
-            String url = "https://kvantfp.000webhostapp.com/ReturnCoursesNews.php?login=" + login;
+            String url = context.getResources().getString(R.string.main_host_dns) + "ReturnCoursesNews.php?login=" + login;
             Document document = Jsoup.connect(url).get();
             Elements element = document.select("li[class=news-item]");
             coursesNewsOfUserDB.deleteAll();

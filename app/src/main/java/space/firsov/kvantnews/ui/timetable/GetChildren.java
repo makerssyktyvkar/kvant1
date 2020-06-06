@@ -7,18 +7,22 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import space.firsov.kvantnews.R;
+
 public class GetChildren extends AsyncTask<String, Void, Integer> {
     private String login;
     private ChildrenDB childrenDB;
+    private Context context;
 
     public GetChildren(String login, Context context) {
         this.login = login;
+        this.context = context;
         childrenDB= new ChildrenDB(context);
     }
 
     @Override
     protected Integer doInBackground(String... args) {
-        String url = "http://kvantfp.000webhostapp.com/ReturnChildren.php?login=" + login;
+        String url = context.getResources().getString(R.string.main_host_dns) + "ReturnChildren.php?login=" + login;
         Document document = null;
         try {
             document = Jsoup.connect(url).get();

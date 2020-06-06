@@ -72,7 +72,7 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
         @Override
         protected Integer doInBackground(String... args) {
             try {
-                String url = "https://kvantfp.000webhostapp.com/ReturnCoursesNews.php?login=" + login;
+                String url = getString(R.string.main_host_dns) + "ReturnCoursesNews.php?login=" + login;
                 Document document = Jsoup.connect(url).get();
                 Elements element = document.select("li[class=news-item]");
                 newsBD.deleteAll();

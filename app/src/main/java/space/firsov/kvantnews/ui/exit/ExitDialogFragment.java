@@ -40,7 +40,7 @@ public class ExitDialogFragment extends AppCompatDialogFragment {
                     Toast.makeText(getActivity(), "Вы вышли",
                             Toast.LENGTH_LONG).show();
                     try {
-                        new AddToMainDBOSId(new User(getContext()).getLogin(), "").execute().get();
+                        new AddToMainDBOSId(new User(getContext()).getLogin(), "", getContext()).execute().get();
                     }catch (Exception e){
                         //
                     }

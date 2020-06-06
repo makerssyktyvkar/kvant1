@@ -1,6 +1,5 @@
 package space.firsov.kvantnews;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 
@@ -10,15 +9,17 @@ import org.jsoup.select.Elements;
 
 public class GetAnswersAndQuestions extends AsyncTask<String, Void, String> {
     private QuestionsAnswersDB questionsAnswersDB;
+    private Context context;
 
     public GetAnswersAndQuestions(Context context) {
         questionsAnswersDB = new QuestionsAnswersDB(context);
+        this.context = context;
     }
 
     @Override
     protected String doInBackground(String... args) {
         try {
-            String url = "https://kvantfp.000webhostapp.com/ReturnFamousAnswer.php";
+            String url = context.getResources().getString(R.string.main_host_dns) + "ReturnFamousAnswer.php";
             Document document = Jsoup.connect(url).get();
             Elements element = document.select("li[class=answer-item]");
             questionsAnswersDB.deleteAll();

@@ -1,6 +1,5 @@
 package space.firsov.kvantnews.ui.support;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -43,7 +42,7 @@ class DeleteSupport extends AppCompatActivity{
         @Override
         protected String doInBackground(String... args) {
             try {
-                String url = "https://kvantfp.000webhostapp.com/DeleteSupportById.php?id=" + id_support;
+                String url = getString(R.string.main_host_dns) + "DeleteSupportById.php?id=" + id_support;
                 Document document = Jsoup.connect(url).get();
             } catch (Exception e) {
                 return "fail";

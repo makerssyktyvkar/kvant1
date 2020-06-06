@@ -6,20 +6,24 @@ import android.os.AsyncTask;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import space.firsov.kvantnews.R;
+
 public class SubmitSupport extends AsyncTask<String, Void, Integer> {
     private String login, question;
     private SupportsDB supportDB;
+    private Context context;
 
     public SubmitSupport(String login, String question, Context context) {
         this.login = login;
         this.question = question;
         supportDB= new SupportsDB(context);
+        this.context = context;
     }
 
     @Override
     protected Integer doInBackground(String... args) {
         try {
-            String url = "https://kvantfp.000webhostapp.com/AddNewSupport.php?login=" +
+            String url = context.getResources().getString(R.string.main_host_dns) + "AddNewSupport.php?login=" +
                     login + "&question=" + question;
             Document document = Jsoup.connect(url).get();
         } catch (Exception e) {

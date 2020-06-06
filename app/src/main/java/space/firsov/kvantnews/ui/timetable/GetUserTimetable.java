@@ -7,20 +7,22 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import space.firsov.kvantnews.ui.achievements.AchievementsDB;
+import space.firsov.kvantnews.R;
 
 public class GetUserTimetable extends AsyncTask<String, Void, Integer> {
     private String login;
     private TimetableDB timetableDB;
+    private Context context;
 
     public GetUserTimetable(String login, Context context) {
         this.login = login;
+        this.context = context;
         timetableDB= new TimetableDB(context);
     }
 
     @Override
     protected Integer doInBackground(String... args) {
-        String url = "http://kvantfp.000webhostapp.com/ReturnTimetable.php?login=" + login;
+        String url = context.getResources().getString(R.string.main_host_dns) + "ReturnTimetable.php?login=" + login;
         Document document = null;
         try {
             document = Jsoup.connect(url).get();

@@ -7,19 +7,23 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import space.firsov.kvantnews.R;
+
 public class GetUserAchievements extends AsyncTask<String, Void, Integer> {
     private String login;
     private AchievementsDB achievementDB;
+    private  Context context;
 
     public GetUserAchievements(String login, Context context) {
         this.login = login;
         achievementDB= new AchievementsDB(context);
+        this.context = context;
     }
 
     @Override
     protected Integer doInBackground(String... args) {
         try {
-            String url = "https://kvantfp.000webhostapp.com/ReturnAchievements.php?login=" + login;
+            String url = context.getResources().getString(R.string.main_host_dns) + "ReturnAchievements.php?login=" + login;
             Document document = Jsoup.connect(url).get();
             Elements el = document.select("li");
             achievementDB.deleteAll();

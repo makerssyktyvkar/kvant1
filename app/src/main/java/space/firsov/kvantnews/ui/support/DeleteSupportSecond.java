@@ -8,7 +8,7 @@ import android.os.Bundle;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import space.firsov.kvantnews.ui.posts.CoursesNewsOfUserDB;
+import space.firsov.kvantnews.R;
 
 public class DeleteSupportSecond extends Activity {
     private String id_support;
@@ -31,7 +31,7 @@ public class DeleteSupportSecond extends Activity {
         protected String doInBackground(String... strings) {
             String res = "ok";
             try{
-                String url = "https://kvantfp.000webhostapp.com/DeleteSupportById.php";
+                String url = getString(R.string.main_host_dns) + "DeleteSupportById.php";
                 Document document = Jsoup.connect(url).data("id_support", String.valueOf(id_support)).post();
             }catch (Exception e){
                 res = "fail";

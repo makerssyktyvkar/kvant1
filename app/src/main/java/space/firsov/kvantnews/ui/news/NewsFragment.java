@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -60,7 +58,7 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
         @Override
         protected String doInBackground(String... args) {
             try {
-                String url = "https://kvantfp.000webhostapp.com/ReturnNews.php";
+                String url = getString(R.string.main_host_dns) + "ReturnNews.php";
                 Document document = Jsoup.connect(url).get();
                 Elements element = document.select("li[class=news-item]");
                 newsBD.deleteAll();

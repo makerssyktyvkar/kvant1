@@ -1,6 +1,5 @@
 package space.firsov.kvantnews.ui.support;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -9,12 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -51,12 +48,11 @@ public class SupportFragment extends Fragment  implements View.OnClickListener {
         if(listSupports.size()!=0){
             adapter = new SupportAdapter(getContext(), R.layout.support_adapter, listSupports);
             lv.setAdapter(adapter);
-        }else{
-            reloadPressed();
         }
         ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
         reload_btn.setOnClickListener(this);
         submit_question_btn.setOnClickListener(this);
+        reloadPressed();
         return root;
     }
 
@@ -72,7 +68,7 @@ public class SupportFragment extends Fragment  implements View.OnClickListener {
         @Override
         protected Integer doInBackground(String... args) {
             try {
-                String url = "https://kvantfp.000webhostapp.com/ReturnSupportsForUser.php?login=" + login;
+                String url = getString(R.string.main_host_dns) + "ReturnSupportsForUser.php?login=" + login;
                 Document document = Jsoup.connect(url).get();
                 Elements element = document.select("li[class=support-item]");
                 supportsDB.deleteAll();

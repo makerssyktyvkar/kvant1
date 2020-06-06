@@ -1,6 +1,5 @@
 package space.firsov.kvantnews;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Pair;
@@ -53,7 +52,7 @@ public class QAndAActivity extends AppCompatActivity implements View.OnClickList
         @Override
         protected String doInBackground(String... args) {
             try {
-                String url = "https://kvantfp.000webhostapp.com/ReturnFamousAnswer.php";
+                String url = getString(R.string.main_host_dns) + "ReturnFamousAnswer.php";
                 Document document = Jsoup.connect(url).get();
                 Elements element = document.select("li[class=answer-item]");
                 questionsAnswersDB.deleteAll();

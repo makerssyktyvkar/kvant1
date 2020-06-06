@@ -50,7 +50,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     else if (!pas1.equals(pas2)) tw1.setText(R.string.pass_should_equal);
                     else {
                         try {
-                            boolean is_clear_name = new addNewUser(name, pas1, String.valueOf(person)).execute().get();
+                            boolean is_clear_name = new addNewUser(name, pas1, String.valueOf(person),getApplicationContext()).execute().get();
                             if (is_clear_name) tw1.setText(R.string.you_successfully_register);
                             else {
                                 tw1.setText(R.string.this_name_busy);

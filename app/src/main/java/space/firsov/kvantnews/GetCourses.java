@@ -11,9 +11,11 @@ import org.jsoup.select.Elements;
 public class GetCourses extends AsyncTask<String, Void, String> {
     private String login;
     private CoursesOfUserDB coursesOfUserDB;
+    private Context context;
 
     public GetCourses(String login, Context context) {
         this.login = login;
+        this.context =context;
         coursesOfUserDB = new CoursesOfUserDB(context);
     }
 
@@ -21,7 +23,7 @@ public class GetCourses extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... args) {
         try {
-            String url = "https://kvantfp.000webhostapp.com/ReturnCourses.php?login=" + login;
+            String url = context.getResources().getString(R.string.main_host_dns) + "ReturnCourses.php?login=" + login;
             Document document = Jsoup.connect(url).get();
             Elements element = document.select("li[class=course-item]");
             coursesOfUserDB.deleteAll();

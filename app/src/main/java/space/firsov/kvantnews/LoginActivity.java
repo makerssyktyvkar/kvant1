@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if(isOnline()) {
                     String type = "pass";
                     try {
-                        type = new GetTypeOfUser(login, password).execute().get();
+                        type = new GetTypeOfUser(login, password,getApplicationContext()).execute().get();
                     } catch (Exception e) {
                         //
                     }
@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                             }
                         });
-                        new AddToMainDBOSId(login,User.UniqueID).execute();
+                        new AddToMainDBOSId(login,User.UniqueID,getApplicationContext()).execute();
                         findAll(login);
                         OneSignal.sendTag("sub","true");
                         switch(tp){

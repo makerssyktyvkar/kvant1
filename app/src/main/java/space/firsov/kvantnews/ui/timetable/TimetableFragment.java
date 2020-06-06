@@ -128,7 +128,7 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
         }
         @Override
         protected String doInBackground(String... strings) {
-            String url = "http://kvantfp.000webhostapp.com/ReturnTimetable.php?login="+name;
+            String url = getString(R.string.main_host_dns) + "ReturnTimetable.php?login="+name;
             Document document = null;
             try {
                 document = Jsoup.connect(url).get();

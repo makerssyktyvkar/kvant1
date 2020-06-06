@@ -1,5 +1,6 @@
 package space.firsov.kvantnews;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -7,20 +8,22 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.URLEncoder;
 
 public class addNewUser extends AsyncTask<String,Void, Boolean> {
     private String login, password, person;
-    addNewUser(String login, String password, String person) {
+    private Context context;
+
+    addNewUser(String login, String password, String person, Context context) {
         this.password = password;
         this.login = login;
         this.person = person;
+        this.context = context;
     }
 
     @Override
     protected Boolean doInBackground(String... arg0) {
         try {
-            String link = "https://kvantfp.000webhostapp.com/addNewUser.php";
+            String link = context.getResources().getString(R.string.main_host_dns) + "addNewUser.php";
             String data = "login" + "=" +
                     login + "&password=" + password + "&type=" + person;
             URL url = new URL(link);

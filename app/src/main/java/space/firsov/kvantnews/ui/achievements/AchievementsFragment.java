@@ -1,6 +1,5 @@
 package space.firsov.kvantnews.ui.achievements;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,7 +24,6 @@ import java.util.ArrayList;
 
 import space.firsov.kvantnews.R;
 import space.firsov.kvantnews.User;
-import space.firsov.kvantnews.ui.timetable.ChildrenDB;
 import space.firsov.kvantnews.ui.timetable.GetChildren;
 
 public class AchievementsFragment extends Fragment  implements View.OnClickListener {
@@ -92,7 +90,7 @@ public class AchievementsFragment extends Fragment  implements View.OnClickListe
         @Override
         protected Integer doInBackground(String... args) {
             try {
-                String url = "https://kvantfp.000webhostapp.com/ReturnAchievements.php?login=" + login;
+                String url = getString(R.string.main_host_dns) + "ReturnAchievements.php?login=" + login;
                 Document document = Jsoup.connect(url).get();
                 Elements el = document.select("li");
                 achievementsDB.deleteAll();

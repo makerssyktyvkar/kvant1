@@ -16,4 +16,5 @@
     <string name="_2020">Разработано в 2020 году</string>
     <string name="developers">Проект двух начинающих программистов из Сыктывкара</string>
     <string name="special_for">Специально для Кванториума</string>
+    <string name="main_host_dns">https://kvantfp.000webhostapp.com/</string>
 </resources>

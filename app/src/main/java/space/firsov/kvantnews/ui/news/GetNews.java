@@ -7,20 +7,22 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import space.firsov.kvantnews.ui.achievements.AchievementsDB;
+import space.firsov.kvantnews.R;
 
 public class GetNews extends AsyncTask<String, Void, Integer> {
     private NewsDB newsDB;
+    private Context context;
 
     public GetNews(Context context) {
         newsDB = new NewsDB(context);
+        this.context = context;
     }
 
     @Override
     protected Integer doInBackground(String... args) {
         if(newsDB.selectAll().size() == 0) {
             try {
-                String url = "https://kvantfp.000webhostapp.com/ReturnNews.php";
+                String url = context.getResources().getString(R.string.main_host_dns) + "ReturnNews.php";
                 Document document = Jsoup.connect(url).get();
                 Elements element = document.select("li[class=news-item]");
                 newsDB.deleteAll();

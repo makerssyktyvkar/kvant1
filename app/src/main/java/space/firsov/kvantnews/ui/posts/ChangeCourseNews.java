@@ -10,7 +10,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.util.Base64;
-import android.util.Log;
 import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,10 +18,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -32,15 +31,14 @@ import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
 import space.firsov.kvantnews.CoursesOfUserDB;
 import space.firsov.kvantnews.R;
-import space.firsov.kvantnews.User;
 
 public class ChangeCourseNews extends AppCompatActivity implements View.OnClickListener {
     private Button course_name_btn;
@@ -229,7 +227,7 @@ public class ChangeCourseNews extends AppCompatActivity implements View.OnClickL
         protected String doInBackground(String... strings) {
             String res = "ok";
             try {
-                String url = "https://kvantfp.000webhostapp.com/ChangeCoursesNews.php";
+                String url = getString(R.string.main_host_dns) + "ChangeCoursesNews.php";
                 Document document;
                 if (changeNews.image != null) {
                     File f = new File(getApplicationContext().getCacheDir(), "image");

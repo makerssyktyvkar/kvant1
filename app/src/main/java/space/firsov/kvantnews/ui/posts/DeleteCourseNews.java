@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -33,7 +31,7 @@ public class DeleteCourseNews extends Activity {
         protected String doInBackground(String... strings) {
             String res = "ok";
             try{
-                String url = "https://kvantfp.000webhostapp.com/DeleteCourseNews.php";
+                String url = getString(R.string.main_host_dns) + "DeleteCourseNews.php";
                 Document document = Jsoup.connect(url).data("id_news", String.valueOf(id_news)).post();
             }catch (Exception e){
                 res = "fail";

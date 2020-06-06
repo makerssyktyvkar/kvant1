@@ -61,10 +61,10 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                     notificated = !notificated;
                     if (!notificated) {
                         OneSignal.sendTag("sub","false");
-                        new AddToMainDBOSId(new User(getContext()).getLogin(), "").execute();
+                        new AddToMainDBOSId(new User(getContext()).getLogin(), "", getContext()).execute();
                     } else {
                         OneSignal.sendTag("sub","true");
-                        new AddToMainDBOSId(new User(getContext()).getLogin(), User.UniqueID).execute();
+                        new AddToMainDBOSId(new User(getContext()).getLogin(), User.UniqueID, getContext()).execute();
                     }
                     new IsNotification(getContext()).change(notificated ? 1 : 0);
                     Toast.makeText(getContext(), "Настройки уведомлений успешно изменены", Toast.LENGTH_SHORT).show();

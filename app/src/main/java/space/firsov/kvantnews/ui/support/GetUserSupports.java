@@ -7,21 +7,23 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import space.firsov.kvantnews.ui.support.SupportsDB;
+import space.firsov.kvantnews.R;
 
 public class GetUserSupports extends AsyncTask<String, Void, Integer> {
     private String login;
     private SupportsDB supportDB;
+    private Context context;
 
     public GetUserSupports(String login, Context context) {
         this.login = login;
         supportDB= new SupportsDB(context);
+        this.context = context;
     }
 
     @Override
     protected Integer doInBackground(String... args) {
         try {
-            String url = "https://kvantfp.000webhostapp.com/ReturnSupportsForUser.php?login=" + login;
+            String url = context.getResources().getString(R.string.main_host_dns) + "ReturnSupportsForUser.php?login=" + login;
             Document document = Jsoup.connect(url).get();
             Elements element = document.select("li[class=support-item]");
             supportDB.deleteAll();
