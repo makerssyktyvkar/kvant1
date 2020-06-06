@@ -47,24 +47,32 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
         login = user.getLogin();
         type = user.getType();
         if(type == 3){
-            childrenNames = new ChildrenDB(getContext()).selectAll();
-            if(childrenNames.size() == 0){
-                try {
-                    new GetChildren(login, getContext()).execute().get();
-                }catch (Exception e){
-                    //
-                }
+            if(isOnline()) {
+                loaderChildren();
                 childrenNames = new ChildrenDB(getContext()).selectAll();
-            }
-            if(childrenNames.size() == 0){
-                mainChildName.setText(R.string.you_havent_children);
+                if(childrenNames.size() == 0){
+                    mainChildName.setText(R.string.you_havent_children);
+                }else{
+                    mainChild = childrenNames.get(0);
+                    mainChildName.setText(mainChild);
+                    loader(mainChild);
+                    showInformationAbout(mainChild);
+                }
             }else{
-                mainChild = childrenNames.get(0);
-                mainChildName.setText(mainChild);
-                showInformationAbout(mainChild);
+                childrenNames = new ChildrenDB(getContext()).selectAll();
+                if(childrenNames.size() == 0){
+                    mainChildName.setText(R.string.you_havent_children);
+                }else{
+                    mainChild = childrenNames.get(0);
+                    mainChildName.setText(mainChild);
+                    showInformationAbout(mainChild);
+                }
             }
         }else if(type == 2 || type == 4){
             mainChildName.getLayoutParams().height = 0;
+            if(isOnline()){
+                loader(login);
+            }
             showInformationAbout(login);
         }
         ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
@@ -99,7 +107,12 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
                 if(type == 2 || type == 4) {
                     loader();
                 }else if(type == 3){
-                    loader(mainChild);
+                    loaderChildren();
+                    if(childrenNames.size()!=0){
+                        mainChild = childrenNames.get(0);
+                        mainChildName.setText(mainChild);
+                        loader(mainChild);
+                    }
                 }
                 break;
             case R.id.main_child_name:
@@ -184,8 +197,14 @@ public class TimetableFragment extends Fragment implements View.OnClickListener 
         }
     }
 
-
-
+    void loaderChildren(){
+        try {
+            new GetChildren(login, getContext()).execute().get();
+        }catch (Exception e){
+            //
+        }
+        childrenNames = new ChildrenDB(getContext()).selectAll();
+    }
 
     private boolean isOnline() {
         Runtime runtime = Runtime.getRuntime();

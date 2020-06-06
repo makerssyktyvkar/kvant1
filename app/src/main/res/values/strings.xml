@@ -17,4 +17,6 @@
     <string name="developers">Проект двух начинающих программистов из Сыктывкара</string>
     <string name="special_for">Специально для Кванториума</string>
     <string name="main_host_dns">https://kvantfp.000webhostapp.com/</string>
+    <string name="havent_any_available_courses">У вас нет доступных курсов.</string>
+    <string name="havent_achievements">Нет достижений</string>
 </resources>

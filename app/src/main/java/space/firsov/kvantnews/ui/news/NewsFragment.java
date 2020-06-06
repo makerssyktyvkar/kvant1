@@ -90,7 +90,7 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
                 lv.setAdapter(adapter);
                 is_thread = false;
             }
-            Toast.makeText(getContext(), R.string.news_is_reloaded,Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.news_is_reloaded,Toast.LENGTH_SHORT).show();
         }
     }
     private void reloadPressed() {
@@ -98,10 +98,10 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
             if (!is_thread) {
                 is_thread = true;
                 new GetNews().execute();
-                Toast.makeText(getContext(), R.string.please_wait, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.please_wait, Toast.LENGTH_SHORT).show();
             }
         }else{
-            Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
         }
     }
 

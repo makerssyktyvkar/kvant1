@@ -64,7 +64,7 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
             Toast.makeText(getContext(), R.string.please_wait, Toast.LENGTH_SHORT).show();
             new GetCourseNews().execute();
         }else{
-            Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
         }
     }
     private class GetCourseNews extends AsyncTask<String, Void, Integer> {
@@ -101,7 +101,7 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
             listNews = newsBD.selectAll();
             adapter = new MyCourseNewsAdapter(getContext(), R.layout.fragment_posts, listNews);
             lv.setAdapter(adapter);
-            Toast.makeText(getContext(), R.string.is_ready, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.news_is_reloaded, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -132,7 +132,7 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
                     Intent intent = new Intent(getContext(), AddCourseNews.class);
                     startActivityForResult(intent, 43);
                 }else{
-                    Toast.makeText(getContext(), "У вас нет доступных курсов.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), R.string.havent_any_available_courses, Toast.LENGTH_LONG).show();
                 }
                 break;
         }

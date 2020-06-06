@@ -52,7 +52,7 @@ public class AchievementsFragment extends Fragment  implements View.OnClickListe
         }else if(type == 3 || type == 4){
             children = achievementsDB.selectUniqueChildren();
             if(children.size()==0){
-                change_childName_btn.setText("Нет достижений");
+                change_childName_btn.setText(R.string.havent_achievements);
                 change_childName_btn.setEnabled(false);
             }else{
                 mainChild = children.get(0);
@@ -116,7 +116,7 @@ public class AchievementsFragment extends Fragment  implements View.OnClickListe
                 }
                 children = achievementsDB.selectUniqueChildren();
                 if(children.size()==0){
-                    change_childName_btn.setText("Нет достижений");
+                    change_childName_btn.setText(R.string.havent_achievements);
                     change_childName_btn.setEnabled(false);
                 }else{
                     mainChild = children.get(0);
