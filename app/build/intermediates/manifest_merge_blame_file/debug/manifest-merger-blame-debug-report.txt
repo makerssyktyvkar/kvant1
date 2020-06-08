@@ -122,365 +122,366 @@
 61-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:18:9-54
 62        android:supportsRtl="true"
 62-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:19:9-35
-63        android:theme="@style/AppTheme" >
-63-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:20:9-40
-64        <activity android:name="space.firsov.kvantnews.LoginActivity" >
-64-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:22:9-28:20
-64-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:22:19-48
-65            <intent-filter>
-65-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:23:13-27:29
-66                <action android:name="android.intent.action.MAIN" />
-66-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:24:17-69
-66-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:24:25-66
-67
-68                <category android:name="android.intent.category.LAUNCHER" />
-68-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
-68-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
-69            </intent-filter>
-70        </activity>
-71        <activity android:name="space.firsov.kvantnews.RegistrationActivity" >
-71-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:29:9-35:20
-71-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:29:19-55
-72            <intent-filter>
-72-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
-73                <action android:name="android.intent.action.ASSIST" />
-73-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
-73-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
-74
-75                <category android:name="android.intent.category.LAUNCHER" />
-75-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
-75-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
-76            </intent-filter>
-77        </activity>
-78        <activity android:name="space.firsov.kvantnews.StudentNavActivity" >
-78-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:36:9-42:20
-78-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:36:19-53
-79            <intent-filter>
-79-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
-80                <action android:name="android.intent.action.ASSIST" />
-80-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
-80-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
-81
-82                <category android:name="android.intent.category.LAUNCHER" />
-82-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
-82-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
-83            </intent-filter>
-84        </activity>
-85        <activity android:name="space.firsov.kvantnews.ui.posts.AddCourseNews" >
-85-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:43:9-49:20
-85-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:43:19-57
-86            <intent-filter>
-86-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
-87                <action android:name="android.intent.action.ASSIST" />
-87-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
-87-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
-88
-89                <category android:name="android.intent.category.LAUNCHER" />
-89-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
-89-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
-90            </intent-filter>
-91        </activity>
-92        <activity android:name="space.firsov.kvantnews.ui.posts.DeleteCourseNews" >
-92-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:50:9-56:20
-92-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:50:19-60
-93            <intent-filter>
-93-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
-94                <action android:name="android.intent.action.ASSIST" />
-94-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
-94-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
-95
-96                <category android:name="android.intent.category.LAUNCHER" />
-96-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
-96-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
-97            </intent-filter>
-98        </activity>
-99        <activity android:name="space.firsov.kvantnews.ui.posts.ChangeCourseNews" >
-99-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:57:9-63:20
-99-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:57:19-60
-100            <intent-filter>
-100-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
-101                <action android:name="android.intent.action.ASSIST" />
-101-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
-101-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
-102
-103                <category android:name="android.intent.category.LAUNCHER" />
-103-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
-103-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
-104            </intent-filter>
-105        </activity>
-106        <activity android:name="space.firsov.kvantnews.ui.support.DeleteSupport" >
-106-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:64:9-70:20
-106-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:64:19-59
-107            <intent-filter>
-107-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
-108                <action android:name="android.intent.action.ASSIST" />
-108-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
-108-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
-109
-110                <category android:name="android.intent.category.LAUNCHER" />
-110-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
-110-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
-111            </intent-filter>
-112        </activity>
-113        <activity android:name="space.firsov.kvantnews.ui.support.DeleteSupportSecond" >
-113-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:71:9-77:20
-113-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:71:19-65
-114            <intent-filter>
-114-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
-115                <action android:name="android.intent.action.ASSIST" />
-115-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
-115-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
-116
-117                <category android:name="android.intent.category.LAUNCHER" />
-117-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
-117-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
-118            </intent-filter>
-119        </activity>
-120        <activity android:name="space.firsov.kvantnews.QAndAActivity" >
-120-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:78:9-84:20
-120-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:78:19-47
-121            <intent-filter>
-121-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
-122                <action android:name="android.intent.action.ASSIST" />
-122-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
-122-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
-123
-124                <category android:name="android.intent.category.LAUNCHER" />
-124-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
-124-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
-125            </intent-filter>
-126        </activity>
-127        <activity android:name="space.firsov.kvantnews.InfoActivity" >
-127-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:85:9-91:20
-127-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:85:19-46
-128            <intent-filter>
-128-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
-129                <action android:name="android.intent.action.ASSIST" />
-129-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
-129-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
-130
-131                <category android:name="android.intent.category.LAUNCHER" />
-131-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
-131-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
-132            </intent-filter>
-133        </activity>
-134
-135        <meta-data
-135-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:49:9-51:51
-136            android:name="onesignal_app_id"
-136-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:50:13-44
-137            android:value="84e62b39-7629-4188-9278-c0976ae9d4a5" /> <!-- Deprecated - Pulled from OneSignal dashboard. -->
-137-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:51:13-48
-138        <meta-data
-138-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:53:9-55:70
-139            android:name="onesignal_google_project_number"
-139-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:54:13-59
-140            android:value="str:REMOTE" />
-140-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:55:13-67
-141
-142        <receiver
-142-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:57:9-67:20
-143            android:name="com.onesignal.GcmBroadcastReceiver"
-143-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:58:13-62
-144            android:permission="com.google.android.c2dm.permission.SEND" >
-144-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:59:13-73
-145
-146            <!-- High priority so OneSignal payloads can be filtered from other GCM receivers if filterOtherGCMReceivers is enabled. -->
-147            <intent-filter android:priority="999" >
-147-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:62:13-66:29
-147-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:62:28-50
-148                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-148-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:63:17-81
-148-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:63:25-78
-149
-150                <category android:name="space.firsov.kvantnews" />
-150-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:65:17-61
-150-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:65:27-58
-151            </intent-filter>
-152        </receiver>
-153        <receiver android:name="com.onesignal.NotificationOpenedReceiver" />
-153-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:68:9-77
-153-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:68:19-74
-154
-155        <service android:name="com.onesignal.GcmIntentService" />
-155-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:70:9-66
-155-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:70:18-63
-156        <service
-156-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:71:9-73:72
-157            android:name="com.onesignal.GcmIntentJobService"
-157-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:72:13-61
-158            android:permission="android.permission.BIND_JOB_SERVICE" />
-158-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:73:13-69
-159        <service
-159-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:74:9-76:72
-160            android:name="com.onesignal.RestoreJobService"
-160-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:75:13-59
-161            android:permission="android.permission.BIND_JOB_SERVICE" />
-161-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:76:13-69
-162        <service
-162-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:77:9-79:72
-163            android:name="com.onesignal.RestoreKickoffJobService"
-163-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:78:13-66
-164            android:permission="android.permission.BIND_JOB_SERVICE" />
-164-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:79:13-69
-165        <service
-165-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:80:9-82:43
-166            android:name="com.onesignal.SyncService"
-166-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:81:13-53
-167            android:stopWithTask="true" />
-167-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:82:13-40
-168        <service
-168-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:83:9-85:72
-169            android:name="com.onesignal.SyncJobService"
-169-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:84:13-56
-170            android:permission="android.permission.BIND_JOB_SERVICE" />
-170-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:85:13-69
-171
-172        <activity
-172-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:87:9-89:75
-173            android:name="com.onesignal.PermissionsActivity"
-173-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:88:13-61
-174            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-174-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:89:13-72
-175
-176        <service android:name="com.onesignal.NotificationRestoreService" />
-176-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:91:9-76
-176-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:91:18-73
-177
-178        <receiver android:name="com.onesignal.BootUpReceiver" >
-178-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:93:9-98:20
-178-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:93:19-62
-179            <intent-filter>
-179-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:94:13-97:29
-180                <action android:name="android.intent.action.BOOT_COMPLETED" />
-180-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:95:17-79
-180-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:95:25-76
-181                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-181-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:96:17-82
-181-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:96:25-79
-182            </intent-filter>
-183        </receiver>
-184        <receiver android:name="com.onesignal.UpgradeReceiver" >
-184-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:99:9-103:20
-184-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:99:19-63
-185            <intent-filter>
-185-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:100:13-102:29
-186                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-186-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:101:17-84
-186-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:101:25-81
-187            </intent-filter>
-188        </receiver>
-189        <!--
-190             FirebaseMessagingService performs security checks at runtime,
-191             no need for explicit permissions despite exported="true"
-192        -->
-193        <service
-193-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:28:9-34:19
-194            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-194-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:29:13-82
-195            android:exported="true" >
-195-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:30:13-36
-196            <intent-filter android:priority="-500" >
-196-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:31:13-33:29
-196-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:31:28-51
-197                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-197-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:32:17-78
-197-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:32:25-75
-198            </intent-filter>
-199        </service>
-200        <service
-200-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:29:9-35:19
-201            android:name="com.google.firebase.components.ComponentDiscoveryService"
-201-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:30:13-84
-202            android:exported="false" >
-202-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:31:13-37
-203            <meta-data
-203-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:32:13-34:85
-204                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-204-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:33:17-96
-205                android:value="com.google.firebase.components.ComponentRegistrar" />
-205-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:34:17-82
-206        </service>
-207
-208        <receiver
-208-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:37:9-44:20
-209            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-209-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:38:13-78
-210            android:exported="true"
-210-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:39:13-36
-211            android:permission="com.google.android.c2dm.permission.SEND" >
-211-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:40:13-73
-212            <intent-filter>
-212-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:41:13-43:29
-213                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-213-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:63:17-81
-213-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:63:25-78
-214            </intent-filter>
-215        </receiver>
-216        <!--
-217             FirebaseInstanceIdService performs security checks at runtime,
-218             no need for explicit permissions despite exported="true"
-219        -->
-220        <service
-220-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:50:9-56:19
-221            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
-221-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:51:13-77
-222            android:exported="true" >
-222-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:52:13-36
-223            <intent-filter android:priority="-500" >
-223-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:53:13-55:29
-223-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:53:28-51
-224                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-224-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:54:17-80
-224-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:54:25-77
-225            </intent-filter>
-226        </service>
-227
-228        <provider
-228-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0b35514f75fa1e929cb6d9471c87514e\jetified-firebase-common-16.0.3\AndroidManifest.xml:10:9-14:39
-229            android:name="com.google.firebase.provider.FirebaseInitProvider"
-229-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0b35514f75fa1e929cb6d9471c87514e\jetified-firebase-common-16.0.3\AndroidManifest.xml:11:13-77
-230            android:authorities="space.firsov.kvantnews.firebaseinitprovider"
-230-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0b35514f75fa1e929cb6d9471c87514e\jetified-firebase-common-16.0.3\AndroidManifest.xml:12:13-72
-231            android:exported="false"
-231-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0b35514f75fa1e929cb6d9471c87514e\jetified-firebase-common-16.0.3\AndroidManifest.xml:13:13-37
-232            android:initOrder="100" />
-232-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0b35514f75fa1e929cb6d9471c87514e\jetified-firebase-common-16.0.3\AndroidManifest.xml:14:13-36
-233
-234        <activity
-234-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\1c236558502aef849320807b2b268589\jetified-play-services-base-16.0.1\AndroidManifest.xml:23:9-26:75
-235            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-235-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\1c236558502aef849320807b2b268589\jetified-play-services-base-16.0.1\AndroidManifest.xml:24:13-79
-236            android:exported="false"
-236-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\1c236558502aef849320807b2b268589\jetified-play-services-base-16.0.1\AndroidManifest.xml:25:13-37
-237            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-237-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\1c236558502aef849320807b2b268589\jetified-play-services-base-16.0.1\AndroidManifest.xml:26:13-72
-238
-239        <meta-data
-239-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\196f9ac0b79bf2fcbb71d83b3cd95472\jetified-play-services-basement-16.0.1\AndroidManifest.xml:23:9-25:69
-240            android:name="com.google.android.gms.version"
-240-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\196f9ac0b79bf2fcbb71d83b3cd95472\jetified-play-services-basement-16.0.1\AndroidManifest.xml:24:13-58
-241            android:value="@integer/google_play_services_version" />
-241-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\196f9ac0b79bf2fcbb71d83b3cd95472\jetified-play-services-basement-16.0.1\AndroidManifest.xml:25:13-66
-242
-243        <provider
-243-->[com.squareup.picasso:picasso:2.71828] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0e02b421f612ffacc6baa9dbc5b366f9\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
-244            android:name="com.squareup.picasso.PicassoProvider"
-244-->[com.squareup.picasso:picasso:2.71828] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0e02b421f612ffacc6baa9dbc5b366f9\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
-245            android:authorities="space.firsov.kvantnews.com.squareup.picasso"
-245-->[com.squareup.picasso:picasso:2.71828] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0e02b421f612ffacc6baa9dbc5b366f9\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
-246            android:exported="false" />
-246-->[com.squareup.picasso:picasso:2.71828] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0e02b421f612ffacc6baa9dbc5b366f9\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
-247        <provider
-247-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\4c8c565ee8291dffa0fa99eb091bdbd7\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
-248            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-248-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\4c8c565ee8291dffa0fa99eb091bdbd7\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
-249            android:authorities="space.firsov.kvantnews.lifecycle-process"
-249-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\4c8c565ee8291dffa0fa99eb091bdbd7\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
-250            android:exported="false"
-250-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\4c8c565ee8291dffa0fa99eb091bdbd7\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
-251            android:multiprocess="true" />
-251-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\4c8c565ee8291dffa0fa99eb091bdbd7\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
-252    </application>
-253
-254</manifest>
+63        android:testOnly="true"
+64        android:theme="@style/AppTheme" >
+64-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:20:9-40
+65        <activity android:name="space.firsov.kvantnews.LoginActivity" >
+65-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:22:9-28:20
+65-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:22:19-48
+66            <intent-filter>
+66-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:23:13-27:29
+67                <action android:name="android.intent.action.MAIN" />
+67-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:24:17-69
+67-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:24:25-66
+68
+69                <category android:name="android.intent.category.LAUNCHER" />
+69-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
+69-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
+70            </intent-filter>
+71        </activity>
+72        <activity android:name="space.firsov.kvantnews.RegistrationActivity" >
+72-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:29:9-35:20
+72-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:29:19-55
+73            <intent-filter>
+73-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
+74                <action android:name="android.intent.action.ASSIST" />
+74-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
+74-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
+75
+76                <category android:name="android.intent.category.LAUNCHER" />
+76-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
+76-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
+77            </intent-filter>
+78        </activity>
+79        <activity android:name="space.firsov.kvantnews.StudentNavActivity" >
+79-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:36:9-42:20
+79-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:36:19-53
+80            <intent-filter>
+80-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
+81                <action android:name="android.intent.action.ASSIST" />
+81-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
+81-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
+82
+83                <category android:name="android.intent.category.LAUNCHER" />
+83-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
+83-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
+84            </intent-filter>
+85        </activity>
+86        <activity android:name="space.firsov.kvantnews.ui.posts.AddCourseNews" >
+86-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:43:9-49:20
+86-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:43:19-57
+87            <intent-filter>
+87-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
+88                <action android:name="android.intent.action.ASSIST" />
+88-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
+88-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
+89
+90                <category android:name="android.intent.category.LAUNCHER" />
+90-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
+90-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
+91            </intent-filter>
+92        </activity>
+93        <activity android:name="space.firsov.kvantnews.ui.posts.DeleteCourseNews" >
+93-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:50:9-56:20
+93-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:50:19-60
+94            <intent-filter>
+94-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
+95                <action android:name="android.intent.action.ASSIST" />
+95-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
+95-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
+96
+97                <category android:name="android.intent.category.LAUNCHER" />
+97-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
+97-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
+98            </intent-filter>
+99        </activity>
+100        <activity android:name="space.firsov.kvantnews.ui.posts.ChangeCourseNews" >
+100-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:57:9-63:20
+100-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:57:19-60
+101            <intent-filter>
+101-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
+102                <action android:name="android.intent.action.ASSIST" />
+102-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
+102-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
+103
+104                <category android:name="android.intent.category.LAUNCHER" />
+104-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
+104-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
+105            </intent-filter>
+106        </activity>
+107        <activity android:name="space.firsov.kvantnews.ui.support.DeleteSupport" >
+107-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:64:9-70:20
+107-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:64:19-59
+108            <intent-filter>
+108-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
+109                <action android:name="android.intent.action.ASSIST" />
+109-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
+109-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
+110
+111                <category android:name="android.intent.category.LAUNCHER" />
+111-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
+111-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
+112            </intent-filter>
+113        </activity>
+114        <activity android:name="space.firsov.kvantnews.ui.support.DeleteSupportSecond" >
+114-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:71:9-77:20
+114-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:71:19-65
+115            <intent-filter>
+115-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
+116                <action android:name="android.intent.action.ASSIST" />
+116-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
+116-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
+117
+118                <category android:name="android.intent.category.LAUNCHER" />
+118-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
+118-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
+119            </intent-filter>
+120        </activity>
+121        <activity android:name="space.firsov.kvantnews.QAndAActivity" >
+121-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:78:9-84:20
+121-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:78:19-47
+122            <intent-filter>
+122-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
+123                <action android:name="android.intent.action.ASSIST" />
+123-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
+123-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
+124
+125                <category android:name="android.intent.category.LAUNCHER" />
+125-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
+125-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
+126            </intent-filter>
+127        </activity>
+128        <activity android:name="space.firsov.kvantnews.InfoActivity" >
+128-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:85:9-91:20
+128-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:85:19-46
+129            <intent-filter>
+129-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:30:13-34:29
+130                <action android:name="android.intent.action.ASSIST" />
+130-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:17-71
+130-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:31:25-68
+131
+132                <category android:name="android.intent.category.LAUNCHER" />
+132-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:17-77
+132-->C:\Android\AndroidProjects\kvant1\app\src\main\AndroidManifest.xml:26:27-74
+133            </intent-filter>
+134        </activity>
+135
+136        <meta-data
+136-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:49:9-51:51
+137            android:name="onesignal_app_id"
+137-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:50:13-44
+138            android:value="84e62b39-7629-4188-9278-c0976ae9d4a5" /> <!-- Deprecated - Pulled from OneSignal dashboard. -->
+138-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:51:13-48
+139        <meta-data
+139-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:53:9-55:70
+140            android:name="onesignal_google_project_number"
+140-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:54:13-59
+141            android:value="str:REMOTE" />
+141-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:55:13-67
+142
+143        <receiver
+143-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:57:9-67:20
+144            android:name="com.onesignal.GcmBroadcastReceiver"
+144-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:58:13-62
+145            android:permission="com.google.android.c2dm.permission.SEND" >
+145-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:59:13-73
+146
+147            <!-- High priority so OneSignal payloads can be filtered from other GCM receivers if filterOtherGCMReceivers is enabled. -->
+148            <intent-filter android:priority="999" >
+148-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:62:13-66:29
+148-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:62:28-50
+149                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+149-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:63:17-81
+149-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:63:25-78
+150
+151                <category android:name="space.firsov.kvantnews" />
+151-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:65:17-61
+151-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:65:27-58
+152            </intent-filter>
+153        </receiver>
+154        <receiver android:name="com.onesignal.NotificationOpenedReceiver" />
+154-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:68:9-77
+154-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:68:19-74
+155
+156        <service android:name="com.onesignal.GcmIntentService" />
+156-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:70:9-66
+156-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:70:18-63
+157        <service
+157-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:71:9-73:72
+158            android:name="com.onesignal.GcmIntentJobService"
+158-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:72:13-61
+159            android:permission="android.permission.BIND_JOB_SERVICE" />
+159-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:73:13-69
+160        <service
+160-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:74:9-76:72
+161            android:name="com.onesignal.RestoreJobService"
+161-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:75:13-59
+162            android:permission="android.permission.BIND_JOB_SERVICE" />
+162-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:76:13-69
+163        <service
+163-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:77:9-79:72
+164            android:name="com.onesignal.RestoreKickoffJobService"
+164-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:78:13-66
+165            android:permission="android.permission.BIND_JOB_SERVICE" />
+165-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:79:13-69
+166        <service
+166-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:80:9-82:43
+167            android:name="com.onesignal.SyncService"
+167-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:81:13-53
+168            android:stopWithTask="true" />
+168-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:82:13-40
+169        <service
+169-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:83:9-85:72
+170            android:name="com.onesignal.SyncJobService"
+170-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:84:13-56
+171            android:permission="android.permission.BIND_JOB_SERVICE" />
+171-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:85:13-69
+172
+173        <activity
+173-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:87:9-89:75
+174            android:name="com.onesignal.PermissionsActivity"
+174-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:88:13-61
+175            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+175-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:89:13-72
+176
+177        <service android:name="com.onesignal.NotificationRestoreService" />
+177-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:91:9-76
+177-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:91:18-73
+178
+179        <receiver android:name="com.onesignal.BootUpReceiver" >
+179-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:93:9-98:20
+179-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:93:19-62
+180            <intent-filter>
+180-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:94:13-97:29
+181                <action android:name="android.intent.action.BOOT_COMPLETED" />
+181-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:95:17-79
+181-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:95:25-76
+182                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+182-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:96:17-82
+182-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:96:25-79
+183            </intent-filter>
+184        </receiver>
+185        <receiver android:name="com.onesignal.UpgradeReceiver" >
+185-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:99:9-103:20
+185-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:99:19-63
+186            <intent-filter>
+186-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:100:13-102:29
+187                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+187-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:101:17-84
+187-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:101:25-81
+188            </intent-filter>
+189        </receiver>
+190        <!--
+191             FirebaseMessagingService performs security checks at runtime,
+192             no need for explicit permissions despite exported="true"
+193        -->
+194        <service
+194-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:28:9-34:19
+195            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+195-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:29:13-82
+196            android:exported="true" >
+196-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:30:13-36
+197            <intent-filter android:priority="-500" >
+197-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:31:13-33:29
+197-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:31:28-51
+198                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+198-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:32:17-78
+198-->[com.google.firebase:firebase-messaging:17.3.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\6c91fdac4acf0674e67314fb9eca1f4d\jetified-firebase-messaging-17.3.3\AndroidManifest.xml:32:25-75
+199            </intent-filter>
+200        </service>
+201        <service
+201-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:29:9-35:19
+202            android:name="com.google.firebase.components.ComponentDiscoveryService"
+202-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:30:13-84
+203            android:exported="false" >
+203-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:31:13-37
+204            <meta-data
+204-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:32:13-34:85
+205                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+205-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:33:17-96
+206                android:value="com.google.firebase.components.ComponentRegistrar" />
+206-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:34:17-82
+207        </service>
+208
+209        <receiver
+209-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:37:9-44:20
+210            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+210-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:38:13-78
+211            android:exported="true"
+211-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:39:13-36
+212            android:permission="com.google.android.c2dm.permission.SEND" >
+212-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:40:13-73
+213            <intent-filter>
+213-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:41:13-43:29
+214                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+214-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:63:17-81
+214-->[com.onesignal:OneSignal:3.12.6] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\c1452746922c578c3eeb8dd10c2c202c\jetified-OneSignal-3.12.6\AndroidManifest.xml:63:25-78
+215            </intent-filter>
+216        </receiver>
+217        <!--
+218             FirebaseInstanceIdService performs security checks at runtime,
+219             no need for explicit permissions despite exported="true"
+220        -->
+221        <service
+221-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:50:9-56:19
+222            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
+222-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:51:13-77
+223            android:exported="true" >
+223-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:52:13-36
+224            <intent-filter android:priority="-500" >
+224-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:53:13-55:29
+224-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:53:28-51
+225                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+225-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:54:17-80
+225-->[com.google.firebase:firebase-iid:17.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\7d3564f728d622d60995fc1733b2fe65\jetified-firebase-iid-17.0.3\AndroidManifest.xml:54:25-77
+226            </intent-filter>
+227        </service>
+228
+229        <provider
+229-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0b35514f75fa1e929cb6d9471c87514e\jetified-firebase-common-16.0.3\AndroidManifest.xml:10:9-14:39
+230            android:name="com.google.firebase.provider.FirebaseInitProvider"
+230-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0b35514f75fa1e929cb6d9471c87514e\jetified-firebase-common-16.0.3\AndroidManifest.xml:11:13-77
+231            android:authorities="space.firsov.kvantnews.firebaseinitprovider"
+231-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0b35514f75fa1e929cb6d9471c87514e\jetified-firebase-common-16.0.3\AndroidManifest.xml:12:13-72
+232            android:exported="false"
+232-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0b35514f75fa1e929cb6d9471c87514e\jetified-firebase-common-16.0.3\AndroidManifest.xml:13:13-37
+233            android:initOrder="100" />
+233-->[com.google.firebase:firebase-common:16.0.3] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0b35514f75fa1e929cb6d9471c87514e\jetified-firebase-common-16.0.3\AndroidManifest.xml:14:13-36
+234
+235        <activity
+235-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\1c236558502aef849320807b2b268589\jetified-play-services-base-16.0.1\AndroidManifest.xml:23:9-26:75
+236            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+236-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\1c236558502aef849320807b2b268589\jetified-play-services-base-16.0.1\AndroidManifest.xml:24:13-79
+237            android:exported="false"
+237-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\1c236558502aef849320807b2b268589\jetified-play-services-base-16.0.1\AndroidManifest.xml:25:13-37
+238            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+238-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\1c236558502aef849320807b2b268589\jetified-play-services-base-16.0.1\AndroidManifest.xml:26:13-72
+239
+240        <meta-data
+240-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\196f9ac0b79bf2fcbb71d83b3cd95472\jetified-play-services-basement-16.0.1\AndroidManifest.xml:23:9-25:69
+241            android:name="com.google.android.gms.version"
+241-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\196f9ac0b79bf2fcbb71d83b3cd95472\jetified-play-services-basement-16.0.1\AndroidManifest.xml:24:13-58
+242            android:value="@integer/google_play_services_version" />
+242-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\196f9ac0b79bf2fcbb71d83b3cd95472\jetified-play-services-basement-16.0.1\AndroidManifest.xml:25:13-66
+243
+244        <provider
+244-->[com.squareup.picasso:picasso:2.71828] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0e02b421f612ffacc6baa9dbc5b366f9\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+245            android:name="com.squareup.picasso.PicassoProvider"
+245-->[com.squareup.picasso:picasso:2.71828] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0e02b421f612ffacc6baa9dbc5b366f9\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+246            android:authorities="space.firsov.kvantnews.com.squareup.picasso"
+246-->[com.squareup.picasso:picasso:2.71828] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0e02b421f612ffacc6baa9dbc5b366f9\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+247            android:exported="false" />
+247-->[com.squareup.picasso:picasso:2.71828] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\0e02b421f612ffacc6baa9dbc5b366f9\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+248        <provider
+248-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\4c8c565ee8291dffa0fa99eb091bdbd7\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
+249            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+249-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\4c8c565ee8291dffa0fa99eb091bdbd7\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
+250            android:authorities="space.firsov.kvantnews.lifecycle-process"
+250-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\4c8c565ee8291dffa0fa99eb091bdbd7\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
+251            android:exported="false"
+251-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\4c8c565ee8291dffa0fa99eb091bdbd7\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
+252            android:multiprocess="true" />
+252-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Firsov62121\.gradle\caches\transforms-2\files-2.1\4c8c565ee8291dffa0fa99eb091bdbd7\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
+253    </application>
+254
+255</manifest>
