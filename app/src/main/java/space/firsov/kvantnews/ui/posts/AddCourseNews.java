@@ -238,6 +238,8 @@ public class AddCourseNews extends AppCompatActivity implements View.OnClickList
                             data("title", news.title).
                             data("message", news.message).
                             data("time", news.additionalInfo).post();
+                    news.image = null;
+                    news.imageString = "";
                 }
                 news.id_news = document.select("p").eq(0).text();
             }catch (Exception e){
