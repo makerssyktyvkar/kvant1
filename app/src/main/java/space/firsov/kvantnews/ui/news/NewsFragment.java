@@ -39,10 +39,11 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
             adapter = new MyNewsAdapter(getContext(), drawThreadNews());
             lv.setAdapter(adapter);
             is_thread = false;
+        }else{
+            reloadPressed();
         }
         ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
         reload_btn.setOnClickListener(this);
-        reloadPressed();
         return root;
     }
     private News[] drawThreadNews (){
@@ -59,7 +60,7 @@ public class NewsFragment extends Fragment  implements View.OnClickListener {
         protected String doInBackground(String... args) {
             try {
                 String url = getString(R.string.main_host_dns) + "ReturnNews.php";
-                Document document = Jsoup.connect(url).get();
+                Document document = Jsoup.connect(url).maxBodySize(0).get();
                 Elements element = document.select("li[class=news-item]");
                 newsBD.deleteAll();
                 listNews.clear();

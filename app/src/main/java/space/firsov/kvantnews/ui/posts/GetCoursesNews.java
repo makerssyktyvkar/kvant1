@@ -24,10 +24,10 @@ public class GetCoursesNews extends AsyncTask<String, Void, Integer> {
     protected Integer doInBackground(String... args) {
         try {
             String url = context.getResources().getString(R.string.main_host_dns) + "ReturnCoursesNews.php?login=" + login;
-            Document document = Jsoup.connect(url).get();
+            Document document = Jsoup.connect(url).maxBodySize(0).get();
             Elements element = document.select("li[class=news-item]");
             coursesNewsOfUserDB.deleteAll();
-            for (int i = 0; i < element.size(); i++) {
+            for (int i = element.size() - 1; i >= 0; i--) {
                 String id_news = element.eq(i).select("p[class=id_news]").eq(0).text();
                 String name = element.eq(i).select("p[class=course_name]").eq(0).text();
                 String title = element.eq(i).select("h2[class=title]").eq(0).text();

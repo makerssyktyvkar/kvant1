@@ -91,7 +91,7 @@ public class AchievementsFragment extends Fragment  implements View.OnClickListe
         protected Integer doInBackground(String... args) {
             try {
                 String url = getString(R.string.main_host_dns) + "ReturnAchievements.php?login=" + login;
-                Document document = Jsoup.connect(url).get();
+                Document document = Jsoup.connect(url).maxBodySize(0).get();
                 Elements el = document.select("li");
                 achievementsDB.deleteAll();
                 for (int i = 0; i < el.size(); i++) {

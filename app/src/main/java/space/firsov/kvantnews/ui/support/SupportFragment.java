@@ -69,7 +69,7 @@ public class SupportFragment extends Fragment  implements View.OnClickListener {
         protected Integer doInBackground(String... args) {
             try {
                 String url = getString(R.string.main_host_dns) + "ReturnSupportsForUser.php?login=" + login;
-                Document document = Jsoup.connect(url).get();
+                Document document = Jsoup.connect(url).maxBodySize(0).get();
                 Elements element = document.select("li[class=support-item]");
                 supportsDB.deleteAll();
                 for (int i = 0; i < element.size(); i++) {

@@ -24,7 +24,7 @@ public class GetUserSupports extends AsyncTask<String, Void, Integer> {
     protected Integer doInBackground(String... args) {
         try {
             String url = context.getResources().getString(R.string.main_host_dns) + "ReturnSupportsForUser.php?login=" + login;
-            Document document = Jsoup.connect(url).get();
+            Document document = Jsoup.connect(url).maxBodySize(0).get();
             Elements element = document.select("li[class=support-item]");
             supportDB.deleteAll();
             for (int i = 0; i < element.size(); i++) {

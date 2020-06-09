@@ -23,7 +23,7 @@ public class GetNews extends AsyncTask<String, Void, Integer> {
         if(newsDB.selectAll().size() == 0) {
             try {
                 String url = context.getResources().getString(R.string.main_host_dns) + "ReturnNews.php";
-                Document document = Jsoup.connect(url).get();
+                Document document = Jsoup.connect(url).maxBodySize(0).get();
                 Elements element = document.select("li[class=news-item]");
                 newsDB.deleteAll();
                 for (int i = 0; i < element.size(); i++) {

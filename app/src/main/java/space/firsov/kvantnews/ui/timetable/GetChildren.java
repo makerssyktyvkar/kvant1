@@ -25,7 +25,7 @@ public class GetChildren extends AsyncTask<String, Void, Integer> {
         String url = context.getResources().getString(R.string.main_host_dns) + "ReturnChildren.php?login=" + login;
         Document document = null;
         try {
-            document = Jsoup.connect(url).get();
+            document = Jsoup.connect(url).maxBodySize(0).get();
             Elements element = document.select("p[class=login]");
             childrenDB.deleteAll();
             for(int i=0;i<element.size();i++){

@@ -90,11 +90,11 @@ public class CoursesNewsOfUserDB {
 
 
     public ArrayList<courseNews> selectAll() {
-        Cursor mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, "id");
+        Cursor mCursor = mDataBase.query(TABLE_NAME, null, null, null, null, null, null);
 
         ArrayList<courseNews> arr = new ArrayList<>();
-        mCursor.moveToFirst();
-        if (!mCursor.isAfterLast()) {
+        mCursor.moveToLast();
+        if (!mCursor.isBeforeFirst()) {
             do {
                 String id = mCursor.getString(NUM_COLUMN_ID);
                 String courseName = mCursor.getString(NUM_COLUMN_NAME_COURSE);
@@ -103,7 +103,7 @@ public class CoursesNewsOfUserDB {
                 String image = mCursor.getString(NUM_COLUMN_IMAGE);
                 String addInfo = mCursor.getString(NUM_COLUMN_ADD_INFO);
                 arr.add(new courseNews(id, courseName,title,message,image,addInfo));
-            } while (mCursor.moveToNext());
+            } while (mCursor.moveToPrevious());
         }
         return arr;
     }

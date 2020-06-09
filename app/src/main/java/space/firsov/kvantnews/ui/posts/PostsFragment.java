@@ -46,8 +46,9 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
         if(listNews.size()!=0){
             adapter = new MyCourseNewsAdapter(getContext(), R.layout.fragment_posts, listNews);
             lv.setAdapter(adapter);
+        }else {
+            reloadPressed();
         }
-        reloadPressed();
         ImageButton reload_btn = (ImageButton)root.findViewById(R.id.reload_btn);
         ImageButton add_news_btn = (ImageButton)root.findViewById(R.id.add_news_btn);
         reload_btn.setOnClickListener(this);
@@ -71,12 +72,14 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
 
         @Override
         protected Integer doInBackground(String... args) {
+            int res = -1;
             try {
                 String url = getString(R.string.main_host_dns) + "ReturnCoursesNews.php?login=" + login;
-                Document document = Jsoup.connect(url).get();
+                Document document = Jsoup.connect(url).maxBodySize(0).get();
                 Elements element = document.select("li[class=news-item]");
                 newsBD.deleteAll();
-                for (int i = 0; i < element.size(); i++) {
+                res = element.size();
+                for (int i = element.size() - 1; i >= 0; i--) {
                     String id_news = element.eq(i).select("p[class=id_news]").eq(0).text();
                     String name = element.eq(i).select("p[class=course_name]").eq(0).text();
                     String title = element.eq(i).select("h2[class=title]").eq(0).text();
@@ -93,7 +96,7 @@ public class PostsFragment extends Fragment  implements View.OnClickListener {
             } catch (Exception e) {
                 //
             }
-            return 1;
+            return res;
         }
         @Override
         public void onPostExecute(Integer s){

@@ -24,7 +24,7 @@ public class GetCourses extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... args) {
         try {
             String url = context.getResources().getString(R.string.main_host_dns) + "ReturnCourses.php?login=" + login;
-            Document document = Jsoup.connect(url).get();
+            Document document = Jsoup.connect(url).maxBodySize(0).get();
             Elements element = document.select("li[class=course-item]");
             coursesOfUserDB.deleteAll();
             for (int i = 0; i < element.size(); i++) {

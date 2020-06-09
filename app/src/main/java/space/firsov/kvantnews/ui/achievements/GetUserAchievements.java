@@ -24,7 +24,7 @@ public class GetUserAchievements extends AsyncTask<String, Void, Integer> {
     protected Integer doInBackground(String... args) {
         try {
             String url = context.getResources().getString(R.string.main_host_dns) + "ReturnAchievements.php?login=" + login;
-            Document document = Jsoup.connect(url).get();
+            Document document = Jsoup.connect(url).maxBodySize(0).get();
             Elements el = document.select("li");
             achievementDB.deleteAll();
             for (int i = 0; i < el.size(); i++) {
