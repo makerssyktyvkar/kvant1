@@ -1,9 +1,11 @@
 package space.firsov.kvantnews;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
@@ -32,12 +34,16 @@ public class RegistrationActivity extends AppCompatActivity {
         person_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
                 showPopupMenu(v);
             }
         });
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
                 if (!isOnline()) {
                     tw1.setText(R.string.no_internet_connection);
                 } else {
